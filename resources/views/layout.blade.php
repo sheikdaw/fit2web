@@ -10,7 +10,7 @@
     <meta name="author" content="Mugli">
     <meta name="description" content="ITek - IT Services & Digital Agency Html Template">
     <!-- ======== Page title ============ -->
-    <title>ITek - IT Services & Digital Agency Html Template</title>
+    <title>FIT@WEB - IT Services & Digital Agency Html Template</title>
     <!--<< Favcion >>-->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}">
     <!--<< Bootstrap min.css >>-->

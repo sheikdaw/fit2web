@@ -2,49 +2,70 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- jQuery -->
+    <meta name="description"
+        content="Zono admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Zono admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="{{ asset('admin/assets/images/favicon.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('admin/assets/images/favicon.png') }}" type="image/x-icon">
+    <title>e-Sevai. இனிய சேவை இணைய சேவை. உங்கள் அருகிலுள்ள இ-சேவை மையத்தை அணுகவும்</title>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="../css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="../css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/font-awesome.css') }}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/vendors/icofont.css') }}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/vendors/themify.css') }}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/vendors/flag-icon.css') }}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/vendors/feather-icon.css') }}">
+    <!-- Plugins css start-->
+    <!-- Plugins css Ends-->
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/vendors/bootstrap.css') }}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ asset('admin/assets/css/color-1.css') }}" media="screen">
+    <!-- Responsive css-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin/assets/css/responsive.css') }}">
 </head>
 
-<body>
+<body class="bg-light">
+    <div class="container p-5 d-flex flex-column align-items-center">
 
-
-    <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-        <div class="card" style="width: 500px;">
-            <div class="text-center card-header">
-                <img src="{{ asset('assets/images/logo/itekHeaderLogo.png') }}" alt="CCMC Logo" class="img-fluid"
-                    style="max-width: 100%; height: auto; max-height: 150px;">
+        <form id="loginForm" class="p-4 mt-5 form-control"
+            style="height:auto; width:380px; box-shadow: rgba(60, 64, 67, 0.3)
+            0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+            @csrf <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
+            <div class="row">
+                <img src="{{ asset('assets/images/logo/itekHeaderLogo.png') }}">
+                <h5 class="p-4 text-center" style="font-weight: 700;">Login Into Your Account</h5>
             </div>
-            <div class="card-body">
-                <div id="errorMessage" class="alert alert-danger" style="display: none;"></div>
-                <form id="loginForm" class="mb-3"> <!-- Corrected ID here -->
-                    @csrf <!-- CSRF token for security -->
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email">
-                        <div id="email_error" class="text-danger"></div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password">
-                        <div id="password_error" class="text-danger"></div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
-                </form>
-
-                <a href="#">ForgetPassword</a>
+            <div class="col-mb-3">
+                <label for="username">Email</label>
+                <input type="text" name="email" id="email" class="form-control">
+                <div id="email_error" class="text-danger"></div>
             </div>
-        </div>
+            <div class="mt-3 mb-3 col">
+                <label for="password"> Password</label>
+                <input type="password" name="password" id="password" class="form-control">
+                <div id="password_error" class="text-danger"></div>
+            </div>
+            <div class="mt-3 mb-3 col">
+                <button type="submit" class="btn btn-success bg-success" style="font-weight: 600;">Login</button>
+            </div>
+
+        </form>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -91,7 +112,6 @@
 
         });
     </script>
-
 </body>
 
 </html>

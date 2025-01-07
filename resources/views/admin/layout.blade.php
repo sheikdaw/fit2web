@@ -64,8 +64,8 @@
             <div class="m-0 header-wrapper row">
                 <div class="col-auto p-0 header-logo-wrapper">
                     <div class="logo-wrapper"><a href="index.php"> <img class="img-fluid for-light"
-                                src="{{ asset('admin/assets/images/logo/logo.png') }}" alt=""><img
-                                class="img-fluid for-dark" src="{{ asset('admin/assets/images/logo/logo_dark.png') }}"
+                                src="{{ asset('assets/images/logo/itekHeaderLogo.png') }}" alt=""><img
+                                class="img-fluid for-dark" src="{{ asset('assets/images/logo/itekHeaderLogo.png') }}"
                                 alt=""></a></div>
 
                     <div class="toggle-sidebar">
@@ -106,7 +106,7 @@
 
                         <li class="py-0 profile-nav onhover-dropdown pe-0">
                             <div class="d-flex align-items-center profile-media"><img class="b-r-25"
-                                    src="{{ asset('admin/assets/images/dashboard/profile.png') }}" alt="">
+                                    src="{{ asset('assets/images/favicon.png') }}" alt="">
                                 <div class="flex-grow-1 user"><span>Purusothaman</span>
                                     <p class="mb-0 font-nunito">Admin
                                         <svg>
@@ -148,14 +148,14 @@
                 <div>
                     <div class="logo-wrapper">
                         <a href="index.php">
-                            <img class="img-fluid for-light" src="{{ asset('admin/assets/images/logo/logo.png') }}"
-                                alt="">
+                            <img class="img-fluid for-light"
+                                src="{{ asset('assets/images/logo/itekHeaderLogo.png') }}" alt="">
 
                         </a>
 
                     </div>
                     <div class="logo-icon-wrapper"><a href="index.php"><img class="img-fluid"
-                                src="{{ asset('admin/assets/images/logo/logo-icon.png') }}" alt=""></a></div>
+                                src="{{ asset('assets/images/logo/itekHeaderLogo.png') }}" alt=""></a></div>
                     <nav class="sidebar-main">
                         <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
                         <div id="sidebar-menu">

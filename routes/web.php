@@ -24,6 +24,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/project', [ProjectController::class, 'Project'])->name("admin.project");
 
     Route::post('/projects', [ProjectController::class, 'store'])->name('admin.store-project'); // Create project
-    Route::put('/projects-update', [ProjectController::class, 'update'])->name('admin.projectUpdate'); // Update project
+    // This route expects an 'id' parameter and will call the 'update' method in ProjectController
+    Route::post('admin/projects-update', [ProjectController::class, 'update'])->name('admin.projectUpdate');
     Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('admin.projectDelete'); // Delete project
 });

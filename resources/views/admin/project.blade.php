@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="mb-3 col-12 text-end">
+            <div class="mt-5 mb-3 col-12 text-end">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal">
                     Add Project
                 </button>
@@ -137,6 +137,19 @@
                             <input type="number" class="form-control" id="rating" name="rating" required>
                             <div class="invalid-feedback">Please enter a rating.</div>
                         </div>
+                        <div class="mb-3">
+                            <label for="image_1" class="form-label">Image 1</label>
+                            <input type="file" class="form-control" id="image_1" name="image_1" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="image_2" class="form-label">Image 2</label>
+                            <input type="file" class="form-control" id="image_2" name="image_2" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label for="image_3" class="form-label">Image 3</label>
+                            <input type="file" class="form-control" id="image_3" name="image_3" accept="image/*">
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -152,28 +165,130 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="updateProjectForm" novalidate>
+                <form id="updateProjectForm" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateProjectModalLabel">Update Project</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <!-- Hidden ID Field -->
                         <input type="hidden" id="update_project_id" name="id">
+
+                        <!-- Project Name -->
                         <div class="mb-3">
                             <label for="update_project_name" class="form-label">Project Name</label>
                             <input type="text" class="form-control" id="update_project_name" name="project_name"
                                 required>
+                            <div class="invalid-feedback">Please enter a project name.</div>
                         </div>
+
+                        <!-- Project Type -->
                         <div class="mb-3">
                             <label for="update_type" class="form-label">Type</label>
                             <input type="text" class="form-control" id="update_type" name="type" required>
+                            <div class="invalid-feedback">Please enter a project type.</div>
                         </div>
+
+                        <!-- Title 1 -->
                         <div class="mb-3">
                             <label for="update_title_1" class="form-label">Title 1</label>
                             <input type="text" class="form-control" id="update_title_1" name="title_1" required>
+                            <div class="invalid-feedback">Please enter title 1.</div>
                         </div>
-                        <!-- Add the rest of the fields for update form as required -->
+
+                        <!-- Title 2 -->
+                        <div class="mb-3">
+                            <label for="update_title_2" class="form-label">Title 2</label>
+                            <input type="text" class="form-control" id="update_title_2" name="title_2" required>
+                            <div class="invalid-feedback">Please enter title 2.</div>
+                        </div>
+
+                        <!-- Paragraph 1 -->
+                        <div class="mb-3">
+                            <label for="update_paragraph_1" class="form-label">Paragraph 1</label>
+                            <textarea class="form-control" id="update_paragraph_1" name="paragraph_1" required></textarea>
+                            <div class="invalid-feedback">Please enter paragraph 1.</div>
+                        </div>
+
+                        <!-- Paragraph 2 -->
+                        <div class="mb-3">
+                            <label for="update_paragraph_2" class="form-label">Paragraph 2</label>
+                            <textarea class="form-control" id="update_paragraph_2" name="paragraph_2" required></textarea>
+                            <div class="invalid-feedback">Please enter paragraph 2.</div>
+                        </div>
+
+                        <!-- Start Date -->
+                        <div class="mb-3">
+                            <label for="update_start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="update_start_date" name="start_date"
+                                required>
+                            <div class="invalid-feedback">Please select a start date.</div>
+                        </div>
+
+                        <!-- End Date -->
+                        <div class="mb-3">
+                            <label for="update_end_date" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="update_end_date" name="end_date" required>
+                            <div class="invalid-feedback">Please select an end date.</div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="mb-3">
+                            <label for="update_category" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="update_category" name="category" required>
+                            <div class="invalid-feedback">Please enter a category.</div>
+                        </div>
+
+                        <!-- Customer Name -->
+                        <div class="mb-3">
+                            <label for="update_customer_name" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" id="update_customer_name" name="customer_name"
+                                required>
+                            <div class="invalid-feedback">Please enter a customer name.</div>
+                        </div>
+
+                        <!-- Advantages -->
+                        <div class="mb-3">
+                            <label for="update_advantages" class="form-label">Advantages (JSON Format)</label>
+                            <textarea class="form-control" id="update_advantages" name="advantages[]" required></textarea>
+                            <div class="invalid-feedback">Please enter advantages in JSON format.</div>
+                        </div>
+
+                        <!-- Project Summary -->
+                        <div class="mb-3">
+                            <label for="update_project_summary" class="form-label">Project Summary</label>
+                            <textarea class="form-control" id="update_project_summary" name="project_summary" required></textarea>
+                            <div class="invalid-feedback">Please enter a project summary.</div>
+                        </div>
+
+                        <!-- Rating -->
+                        <div class="mb-3">
+                            <label for="update_rating" class="form-label">Rating</label>
+                            <input type="number" class="form-control" id="update_rating" name="rating" required>
+                            <div class="invalid-feedback">Please enter a rating.</div>
+                        </div>
+
+                        <!-- Image 1 -->
+                        <div class="mb-3">
+                            <label for="update_image_1" class="form-label">Image 1</label>
+                            <input type="file" class="form-control" id="update_image_1" name="image_1"
+                                accept="image/*">
+                        </div>
+
+                        <!-- Image 2 -->
+                        <div class="mb-3">
+                            <label for="update_image_2" class="form-label">Image 2</label>
+                            <input type="file" class="form-control" id="update_image_2" name="image_2"
+                                accept="image/*">
+                        </div>
+
+                        <!-- Image 3 -->
+                        <div class="mb-3">
+                            <label for="update_image_3" class="form-label">Image 3</label>
+                            <input type="file" class="form-control" id="update_image_3" name="image_3"
+                                accept="image/*">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -184,108 +299,55 @@
         </div>
     </div>
 
+
     <script>
-        const routes = {
-            projectStore: "{{ route('admin.store-project') }}",
-            projectUpdate: "{{ route('admin.projectUpdate') }}",
-            projectDelete: "{{ route('admin.projectDelete', ['id' => 'mm']) }}",
-        };
         $(document).ready(function() {
-            // CSRF Token setup for AJAX
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+            const routes = {
+                projectStore: "{{ route('admin.store-project') }}",
+                projectUpdate: "{{ route('admin.projectUpdate') }}",
+                projectDelete: "{{ route('admin.projectDelete', ['id' => 'mm']) }}",
+            };
 
-            // Add Project
-            $('#addProjectForm').on('submit', function(e) {
-                e.preventDefault();
-                let formData = $(this).serialize();
+            $("#addProjectForm").on("submit", function(event) {
+                event.preventDefault(); // Prevent the default form submission
 
+                alert('hi');
+                // Gather form data
+                var formData = $(this).serialize();
+
+                // Send AJAX request
                 $.ajax({
                     url: routes.projectStore,
-                    type: 'POST',
+                    type: "POST",
                     data: formData,
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
                     success: function(response) {
-                        if (response.success) {
-                            alert('Project added successfully!');
-                            location.reload(); // Reload the page
-                        } else {
-                            alert('Error: ' + response.message);
-                        }
+                        // Handle success
+                        $("#addProjectModal").modal("hide");
+                        $("#addProjectForm")[0].reset();
+                        showFlashMessage(response.message, "success");
+                        showUpdatedSurveyors(response.surveyors);
                     },
                     error: function(xhr) {
-                        alert('Something went wrong.');
-                    }
-                });
-            });
-
-            // Edit/Update Project
-            $('.editProject').on('click', function() {
-                // Populate update modal with data
-                $('#update_project_id').val($(this).data('id'));
-                $('#update_project_name').val($(this).data('project_name'));
-                $('#update_type').val($(this).data('type'));
-                $('#update_title_1').val($(this).data('title_1'));
-                $('#update_title_2').val($(this).data('title_2'));
-                $('#update_paragraph_1').val($(this).data('paragraph_1'));
-                $('#update_paragraph_2').val($(this).data('paragraph_2'));
-                $('#update_start_date').val($(this).data('start_date'));
-                $('#update_end_date').val($(this).data('end_date'));
-                $('#update_category').val($(this).data('category'));
-                $('#update_customer_name').val($(this).data('customer_name'));
-                $('#update_advantages').val($(this).data('advantages'));
-                $('#update_project_summary').val($(this).data('project_summary'));
-                $('#update_rating').val($(this).data('rating'));
-
-                // Show the modal
-                $('#updateProjectModal').modal('show');
-            });
-
-            $('#updateProjectForm').on('submit', function(e) {
-                e.preventDefault();
-                let formData = $(this).serialize();
-
-                $.ajax({
-                    url: routes.projectUpdate,
-                    type: 'POST',
-                    data: formData,
-                    success: function(response) {
-                        if (response.success) {
-                            alert('Project updated successfully!');
-                            location.reload(); // Reload the page
-                        } else {
-                            alert('Error: ' + response.message);
-                        }
-                    },
-                    error: function(xhr) {
-                        alert('Something went wrong.');
-                    }
-                });
-            });
-
-            // Delete Project
-            $('.delete-project').on('click', function() {
-                if (confirm('Are you sure you want to delete this project?')) {
-                    let projectId = $(this).data('id');
-
-                    $.ajax({
-                        url: routes.projectDelete.replace('mm', projectId),
-                        type: 'DELETE',
-                        success: function(response) {
-                            if (response.success) {
-                                alert('Project deleted successfully!');
-                                location.reload(); // Reload the page
-                            } else {
-                                alert('Error: ' + response.message);
+                        // Handle error
+                        showFlashMessage("Error ", "error");
+                        if (xhr.status === 422) {
+                            // Validation errors
+                            const errors = xhr.responseJSON.errors;
+                            for (const key in errors) {
+                                const input = $(`#${key}`);
+                                input.addClass("is-invalid"); // Add Bootstrap invalid class
+                                input.next(".invalid-feedback").text(errors[key][
+                                    0
+                                ]); // Show error message
                             }
-                        },
-                        error: function(xhr) {
-                            alert('Something went wrong.');
+                        } else {
+                            alert("An unexpected error occurred. Please try again.");
                         }
-                    });
-                }
+                    },
+                });
             });
         });
     </script>

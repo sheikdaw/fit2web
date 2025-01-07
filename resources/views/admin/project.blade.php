@@ -305,43 +305,39 @@
             const routes = {
                 projectStore: "{{ route('admin.store-project') }}",
                 projectUpdate: "{{ route('admin.projectUpdate') }}",
-                projectDelete: "{{ route('admin.projectDelete', ['id' => 'mm']) }}",
+                projectDelete: "{{ route('admin.project.destroy', 'ID_PLACEHOLDER') }}",
             };
 
+            // Add Project
             $("#addProjectForm").on("submit", function(event) {
-                event.preventDefault(); // Prevent the default form submission
+                event.preventDefault();
 
-                alert('hi');
                 // Gather form data
-                var formData = $(this).serialize();
+                var formData = new FormData(this);
 
                 // Send AJAX request
                 $.ajax({
                     url: routes.projectStore,
                     type: "POST",
                     data: formData,
+                    processData: false,
+                    contentType: false,
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
                     success: function(response) {
-                        // Handle success
                         $("#addProjectModal").modal("hide");
                         $("#addProjectForm")[0].reset();
                         showFlashMessage(response.message, "success");
-                        showUpdatedSurveyors(response.surveyors);
+                        location.reload(); // Reload to reflect the updated project list
                     },
                     error: function(xhr) {
-                        // Handle error
-                        showFlashMessage("Error ", "error");
                         if (xhr.status === 422) {
-                            // Validation errors
                             const errors = xhr.responseJSON.errors;
                             for (const key in errors) {
                                 const input = $(`#${key}`);
-                                input.addClass("is-invalid"); // Add Bootstrap invalid class
-                                input.next(".invalid-feedback").text(errors[key][
-                                    0
-                                ]); // Show error message
+                                input.addClass("is-invalid");
+                                input.next(".invalid-feedback").text(errors[key][0]);
                             }
                         } else {
                             alert("An unexpected error occurred. Please try again.");
@@ -349,6 +345,101 @@
                     },
                 });
             });
+
+            // Edit Project (populate modal fields with existing data)
+            $(".editProject").on("click", function() {
+                const data = $(this).data();
+
+                $("#update_project_id").val(data.id);
+                $("#update_project_name").val(data.project_name);
+                $("#update_type").val(data.type);
+                $("#update_title_1").val(data.title_1);
+                $("#update_title_2").val(data.title_2);
+                $("#update_paragraph_1").val(data.paragraph_1);
+                $("#update_paragraph_2").val(data.paragraph_2);
+                $("#update_start_date").val(data.start_date);
+                $("#update_end_date").val(data.end_date);
+                $("#update_category").val(data.category);
+                $("#update_customer_name").val(data.customer_name);
+                $("#update_advantages").val(JSON.stringify(data.advantages)); // Ensure JSON format
+                $("#update_project_summary").val(data.project_summary);
+                $("#update_rating").val(data.rating);
+
+                $("#updateProjectModal").modal("show");
+            });
+
+            // Update Project
+            $("#updateProjectForm").on("submit", function(event) {
+                event.preventDefault();
+
+                const projectId = $("#update_project_id").val();
+                const formData = new FormData(this);
+
+                $.ajax({
+                    url: routes.projectUpdate,
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                    },
+                    success: function(response) {
+                        $("#updateProjectModal").modal("hide");
+                        showFlashMessage(response.message, "success");
+                        location.reload(); // Reload the page to reflect changes
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            const errors = xhr.responseJSON.errors;
+                            for (const key in errors) {
+                                const input = $(`#update_${key}`);
+                                input.addClass("is-invalid");
+                                input.next(".invalid-feedback").text(errors[key][0]);
+                            }
+                        } else {
+                            alert("An unexpected error occurred. Please try again.");
+                        }
+                    },
+                });
+            });
+
+            // Delete Project
+            $(".delete-project").on("click", function() {
+                const projectId = $(this).data("id");
+
+                if (confirm("Are you sure you want to delete this project?")) {
+                    $.ajax({
+                        url: routes.projectDelete.replace("ID_PLACEHOLDER", projectId),
+                        type: "DELETE",
+                        headers: {
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                        },
+                        success: function(response) {
+                            alert(response.message); // Or use showFlashMessage if defined
+                            location.reload(); // Reload to reflect the deletion
+                        },
+                        error: function(xhr, status, error) {
+                            alert("Failed to delete the project. Please try again.");
+                        },
+                    });
+                }
+            });
+
+
+            // Helper: Show Flash Message
+            function showFlashMessage(message, type) {
+                const flashMessage = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>`;
+                $("body").prepend(flashMessage);
+
+                // Auto-hide the message after 3 seconds
+                setTimeout(() => {
+                    $(".alert").alert("close");
+                }, 3000);
+            }
         });
     </script>
 

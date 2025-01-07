@@ -3,12 +3,11 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [ViewController::class, 'index'])->name('index');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 
@@ -22,9 +21,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name("dashboard");
     Route::get('/ourservices', [DashboardController::class, 'ourServices'])->name("ourservices");
     Route::get('/project', [ProjectController::class, 'Project'])->name("admin.project");
-
-    Route::post('/projects', [ProjectController::class, 'store'])->name('admin.store-project'); // Create project
-    // This route expects an 'id' parameter and will call the 'update' method in ProjectController
-    Route::post('admin/projects-update', [ProjectController::class, 'update'])->name('admin.projectUpdate');
-    Route::delete('/projects/{id}', [ProjectController::class, 'destroy'])->name('admin.projectDelete'); // Delete project
+    Route::post('/projects', [ProjectController::class, 'store'])->name('admin.store-project');
+    Route::post('/admin/update-project', [ProjectController::class, 'update'])->name('admin.projectUpdate');
+    Route::delete('admin/project/{id}', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
 });

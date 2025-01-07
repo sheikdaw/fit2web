@@ -480,87 +480,33 @@
                             information</div>
                     </div>
                     <div class="row g-4">
-                        <div class="col-xl-6 col-md-6">
-                            <div class="project-card style1 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="project-thumb">
-                                    <img src="assets/images/project/projectCardThumb1_1.jpg" alt="thumb">
-                                </div>
-                                <div class="project-content">
-                                    <div class="title-wrap">
-                                        <div class="subtitle">Solutions</div>
-                                        <h3 class="title"><a href="project-details.html">TechVision Solutions</a>
-                                        </h3>
+                        <div class="row g-4">
+                            @foreach ($projects as $key => $project)
+                                <div class="col-xl-{{ $key < 3 ? '6' : '3' }} col-md-6">
+                                    <div class="project-card style1 wow fadeInUp"
+                                        data-wow-delay="{{ ($key + 1) * 0.3 }}s">
+                                        <div class="project-thumb">
+                                            <img src="{{ asset('images/' . $project->project_name . '/' . $project->image_1) }}"
+                                                alt="{{ $project->project_name }}">
+                                        </div>
+                                        <div class="project-content{{ $key >= 3 ? ' style2' : '' }}">
+                                            <div class="title-wrap">
+                                                <div class="subtitle">{{ $project->type }}</div>
+                                                <h3 class="title">
+                                                    <a href="project-details.html">{{ $project->project_name }}</a>
+                                                </h3>
+                                            </div>
+                                            <a class="arrow-btn" href="project-details.html">
+                                                <i class="fa-solid fa-arrow-right-long"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <a class="arrow-btn" href="project-details.html"><i
-                                            class="fa-solid fa-arrow-right-long"></i></a>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="project-card style1 wow fadeInUp" data-wow-delay=".6s">
-                                <div class="project-thumb">
-                                    <img src="assets/images/project/projectCardThumb1_2.jpg" alt="thumb">
-                                </div>
-                                <div class="project-content">
-                                    <div class="title-wrap">
-                                        <div class="subtitle">Solutions</div>
-                                        <h3 class="title"><a href="project-details.html">TechVision Solutions</a>
-                                        </h3>
-                                    </div>
-                                    <a class="arrow-btn" href="project-details.html"><i
-                                            class="fa-solid fa-arrow-right-long"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6">
-                            <div class="project-card style1 wow fadeInUp" data-wow-delay=".8s">
-                                <div class="project-thumb">
-                                    <img src="assets/images/project/projectCardThumb1_3.jpg" alt="thumb">
-                                </div>
-                                <div class="project-content">
-                                    <div class="title-wrap">
-                                        <div class="subtitle">Solutions</div>
-                                        <h3 class="title"><a href="project-details.html">TechVision Solutions</a>
-                                        </h3>
-                                    </div>
-                                    <a class="arrow-btn" href="project-details.html"><i
-                                            class="fa-solid fa-arrow-right-long"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="project-card style1 wow fadeInUp" data-wow-delay=".3s">
-                                <div class="project-thumb">
-                                    <img src="assets/images/project/projectCardThumb1_4.jpg" alt="thumb">
-                                </div>
-                                <div class="project-content style2">
-                                    <div class="title-wrap">
-                                        <div class="subtitle">Solutions</div>
-                                        <h3 class="title"><a href="project-details.html">TechVision Solutions</a>
-                                        </h3>
-                                    </div>
-                                    <a class="arrow-btn" href="project-details.html"><i
-                                            class="fa-solid fa-arrow-right-long"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="project-card style1 wow fadeInUp" data-wow-delay=".6s">
-                                <div class="project-thumb">
-                                    <img src="assets/images/project/projectCardThumb1_5.jpg" alt="thumb">
-                                </div>
-                                <div class="project-content style2">
-                                    <div class="title-wrap">
-                                        <div class="subtitle">Solutions</div>
-                                        <h3 class="title"><a href="project-details.html">TechVision Solutions</a>
-                                        </h3>
-                                    </div>
-                                    <a class="arrow-btn" href="project-details.html"><i
-                                            class="fa-solid fa-arrow-right-long"></i></a>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
+
                 </div>
             </div>
         </div>

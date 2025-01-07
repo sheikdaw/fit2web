@@ -1,264 +1,212 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Ready Bootstrap Dashboard</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/ready.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/demo.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGT Solutions</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Bootstrap 5.3 JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v10.0.0/dist/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.0.0/ol.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        body {
+            padding-top: 70px;
+            /* Adjust this value depending on the height of your navbar */
+        }
+
+        #map {
+            height: 89vh;
+            width: 100%;
+        }
+
+        /* Custom styles for offcanvas links */
+        .offcanvas-body .nav-link {
+            color: #343a40;
+            /* Default link color */
+            padding: 15px;
+            /* Padding for links */
+            font-weight: 500;
+            /* Bold text */
+            transition: background-color 0.3s;
+            /* Smooth background transition */
+        }
+
+        .offcanvas-body .nav-link:hover {
+            background-color: #f8f9fa;
+            /* Light background on hover */
+            color: #007bff;
+            /* Change text color on hover */
+        }
+
+        .offcanvas-body .nav-link.active {
+            background-color: #e9ecef;
+            /* Active link background */
+            color: #495057;
+            /* Active link text color */
+        }
+
+        .offcanvas-body .dropdown-menu {
+            background-color: #f8f9fa;
+            /* Dropdown menu background */
+        }
+
+        .offcanvas-body .dropdown-item {
+            color: #343a40;
+            /* Dropdown item color */
+        }
+
+        .offcanvas-body .dropdown-item:hover {
+            background-color: #007bff;
+            /* Dropdown item hover background */
+            color: white;
+            /* Dropdown item hover text color */
+        }
+
+        .model {
+            position: relative;
+            /* Ensure modal itself is positioned */
+        }
+
+        #flash-message {
+            position: absolute;
+            /* Position it relative to the modal */
+            top: 10px;
+            /* Adjust the position from the top of the modal */
+            left: 50%;
+            transform: translateX(-50%);
+            /* Center the flash message horizontally */
+            z-index: 1060;
+            /* Ensure it is above modal content */
+            min-width: 200px;
+            max-width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Flash message style adjustments */
+        #flash-message-success,
+        #flash-message-error {
+            position: absolute;
+            top: 10px;
+            /* Adjust based on how you want the flash message to appear */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1060;
+            display: none;
+            /* Set to block or inline-block when you want to show it */
+            min-width: 200px;
+            max-width: 350px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="main-header">
-            <div class="logo-header">
-                <a href="index.html" class="logo">
-                    Ready Dashboard
-                </a>
-                <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse"
-                    data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
-            </div>
-            <nav class="navbar navbar-header navbar-expand-lg">
-                <div class="container-fluid">
+    <div id="flash-message-success" class="alert alert-success alert-dismissible fade show" role="alert"
+        style="display: none;">
+        <span id="flash-message-success-content"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
-                    <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                        <div class="input-group">
-                            <input type="text" placeholder="Search ..." class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="la la-search search-icon"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-envelope"></i>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+    <div id="flash-message-error" class="alert alert-danger alert-dismissible fade show" role="alert"
+        style="display: none;">
+        <span id="flash-message-error-content"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    <nav class="navbar bg-body-tertiary fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('img/logo.png') }}" alt="" style="width: 150px; height: auto;">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Offcanvas Navbar -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+                <p>Welcome, Admin!</p>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.project') }}">
+                        <i class="fas fa-compass"></i> Projects
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-money-bill-wave"></i> Tax Collectors
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fas fa-cog"></i> Dropdown
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i> Action</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-clipboard"></i> Another
+                                action</a>
                         </li>
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-bell"></i>
-                                <span class="notification">3</span>
-                            </a>
-                            <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <div class="dropdown-title">You have 4 new notification</div>
-                                </li>
-                                <li>
-                                    <div class="notif-center">
-                                        <a href="#">
-                                            <div class="notif-icon notif-primary"> <i class="la la-user-plus"></i>
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    New user registered
-                                                </span>
-                                                <span class="time">5 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Rahmad commented on Admin
-                                                </span>
-                                                <span class="time">12 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-img">
-                                                <img src="{{ asset('admin/assets/img/profile2.jpg') }}"
-                                                    alt="Img Profile">
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Reza send messages to you
-                                                </span>
-                                                <span class="time">12 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Farrah liked Admin
-                                                </span>
-                                                <span class="time">17 minutes ago</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="see-all" href="javascript:void(0);"> <strong>See all
-                                            notifications</strong> <i class="la la-angle-right"></i> </a>
-                                </li>
-                            </ul>
+                        <li>
+                            <hr class="dropdown-divider">
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
-                                aria-expanded="false"> <img src="{{ asset('admin/assets/img/profile.jpg') }}"
-                                    alt="user-img" width="36" class="img-circle"><span>Hizrian</span></span> </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <div class="user-box">
-                                        <div class="u-img"><img src="{{ asset('admin/assets/img/profile.jpg') }}"
-                                                alt="user">
-                                        </div>
-                                        <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@themekita.com</p><a href="profile.html"
-                                                class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-user"></i> My Profile</a>
-                                <a class="dropdown-item" href="#"></i> My Balance</a>
-                                <a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account
-                                    Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="fa fa-power-off"></i> Logout</a>
-                            </ul>
-                            <!-- /.dropdown-user -->
-                        </li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-ellipsis-h"></i> Something else
+                                here</a></li>
                     </ul>
-                </div>
-            </nav>
-        </div>
-        <div class="sidebar">
-            <div class="scrollbar-inner sidebar-wrapper">
-                <div class="user">
-                    <div class="photo">
-                        <img src="{{ asset('admin/assets/img/profile.jpg') }}">
-                    </div>
-                    <div class="info">
-                        <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                            <span>
-                                Hizrian
-                                <span class="user-level">Administrator</span>
-                                <span class="caret"></span>
-                            </span>
-                        </a>
-                        <div class="clearfix"></div>
+                </li>
+                <!-- Admin-specific content -->
 
-                        <div class="collapse in" id="collapseExample" aria-expanded="true" style="">
-                            <ul class="nav">
-                                <li>
-                                    <a href="#profile">
-                                        <span class="link-collapse">My Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#edit">
-                                        <span class="link-collapse">Edit Profile</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#settings">
-                                        <span class="link-collapse">Settings</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <ul class="nav">
-                    <li class="nav-item active">
-                        <a href="{{ route('dashboard') }}">
-                            <i class="la la-dashboard"></i>
-                            <p>Dashboard</p>
-                            {{-- <span class="badge badge-count">5</span> --}}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('ourservices') }}">
-                            <i class="la la-table"></i>
-                            <p>Our Services</p>
-                            {{-- <span class="badge badge-count">7</span> --}}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="forms.html">
-                            <i class="la la-keyboard-o"></i>
-                            <p>Forms</p>
-                            <span class="badge badge-count">50</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="tables.html">
-                            <i class="la la-th"></i>
-                            <p>Tables</p>
-                            <span class="badge badge-count">6</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="notifications.html">
-                            <i class="la la-bell"></i>
-                            <p>Notifications</p>
-                            <span class="badge badge-success">3</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="typography.html">
-                            <i class="la la-font"></i>
-                            <p>Typography</p>
-                            <span class="badge badge-danger">25</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="icons.html">
-                            <i class="la la-fonticons"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li class="nav-item update-pro">
-                        <button data-toggle="modal" data-target="#modalUpdate">
-                            <i class="la la-hand-pointer-o"></i>
-                            <p>Update To Pro</p>
+
+
+                <li class="nav-item">
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-link">
+                            <i class="fas fa-sign-out-alt"></i> Logout
                         </button>
-                    </li>
-                </ul>
-            </div>
+                    </form>
+                </li>
+            </ul>
+
         </div>
-        <div class="main-panel">
-            <div class="content">
-                @yield('content')
-            </div>
-        </div>
+    </div>
+
+    @yield('content')
 </body>
-<script src="{{ asset('admin/assets/js/core/jquery.3.2.1.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/core/popper.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/core/bootstrap.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/chartist/chartist.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/jquery-mapael/jquery.mapael.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/jquery-mapael/maps/world_countries.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/ready.min.js') }}"></script>
-<script src="{{ asset('admin/assets/js/demo.js') }}"></script>
+<script src="{{ asset('js/main.js') }}"></script>
 
 </html>

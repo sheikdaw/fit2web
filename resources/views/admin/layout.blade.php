@@ -107,7 +107,7 @@
                         <li class="py-0 profile-nav onhover-dropdown pe-0">
                             <div class="d-flex align-items-center profile-media"><img class="b-r-25"
                                     src="{{ asset('assets/images/favicon.png') }}" alt="">
-                                <div class="flex-grow-1 user"><span>Purusothaman</span>
+                                <div class="flex-grow-1 user"><span>FIT2WEB</span>
                                     <p class="mb-0 font-nunito">Admin
                                         <svg>
                                             <use href="assets/svg/icon-sprite.svg#header-arrow-down"></use>

@@ -51,7 +51,6 @@ class ProjectController extends Controller
             }
         }
 
-        // Create the project record in the database
         $project = Project::create([
             'project_name' => $validated['project_name'],
             'type' => $validated['type'],
@@ -70,6 +69,7 @@ class ProjectController extends Controller
             'image_2' => $imagePaths['image_2'] ?? null,
             'image_3' => $imagePaths['image_3'] ?? null,
         ]);
+        return response()->json("success");
 
         return redirect()->route('admin.project')->with('success', 'Project created successfully!');
     }
@@ -163,5 +163,19 @@ class ProjectController extends Controller
         $project->delete();
 
         return response()->json('success', 'Project deleted successfully!');
+    }
+    public function show($id)
+    {
+        $project = Project::findOrFail($id);
+
+        $advantage = json_decode($project->advantages, true); // Decode the string to an array
+
+        // Now, decode the second layer (array inside the first array)
+        $advantage = json_decode($advantage[0], true);
+        // Return the list of characters as a response
+        // return response()->json($advantage);
+
+        // return response()->json($);
+        return view('project-details', compact('project', 'advantage'));
     }
 }

@@ -24,6 +24,9 @@ class Project extends Model
         'project_summary',
         'rating',
         'ordered_by',
+        'image_1', // Added image_1 to the fillable array
+        'image_2', // Added image_2 to the fillable array
+        'image_3', // Added image_3 to the fillable array
     ];
 
     protected $casts = [

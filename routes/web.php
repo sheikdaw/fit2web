@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
+Route::get('/project/{id}', [ProjectController::class, 'show'])->name('project');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 

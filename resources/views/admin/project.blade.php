@@ -329,7 +329,7 @@
                         $("#addProjectModal").modal("hide");
                         $("#addProjectForm")[0].reset();
                         showFlashMessage(response.message, "success");
-                        location.reload(); // Reload to reflect the updated project list
+                        // location.reload(); // Reload to reflect the updated project list
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {

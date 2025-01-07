@@ -27,6 +27,10 @@ return new class extends Migration
             $table->text('project_summary'); // Project summary
             $table->integer('rating')->nullable(); // Rating of the project
             $table->integer('ordered_by')->nullable(); // Ordered by (can be a reference to another table)
+            $table->string('image_1')->nullable(); // Path or URL for the first image
+            $table->string('image_2')->nullable(); // Path or URL for the second image
+            $table->string('image_3')->nullable(); // Path or URL for the third image
+
             $table->timestamps(); // Created at and updated at
 
             $table->index(['project_name', 'category']); // Indexing project_name and category for faster queries

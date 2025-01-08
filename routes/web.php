@@ -30,6 +30,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     // Store a new blog
     Route::post('/admin/store-blog', [BlogController::class, 'store'])->name('admin.store-blog');
 
+    Route::get('/blog', [BlogController::class, 'blog'])->name("admin.blog");
     // Update an existing blog
     Route::post('/admin/update-blog', [BlogController::class, 'update'])->name('admin.blogUpdate');
 

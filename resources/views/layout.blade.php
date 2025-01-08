@@ -174,88 +174,11 @@
                                     <nav id="mobile-menu">
                                         <ul>
                                             <li class="has-dropdown active menu-thumb">
-                                                <a href="#">
+                                                <a href="{{ route('index') }}">
                                                     Home
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu has-homemenu">
-                                                    <li>
-                                                        <div class="homemenu-items">
-                                                            <div class="homemenu">
-                                                                <div class="homemenu-thumb">
-                                                                    <img src="{{ asset('assets/images/header/home-1.png') }}"
-                                                                        alt="img">
-                                                                    <div class="demo-button">
-                                                                        <a class="theme-btn" href="index.html">
-                                                                            Multi Page
-                                                                        </a>
-                                                                        <a class="theme-btn"
-                                                                            href="index-one-page.html">
-                                                                            One Page
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center homemenu-content">
-                                                                    <h4 class="homemenu-title">Home 01</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="homemenu">
-                                                                <div class="homemenu-thumb mb-15">
-                                                                    <img src="{{ asset('assets/images/header/home-2.png') }}"
-                                                                        alt="img">
-                                                                    <div class="demo-button">
-                                                                        <a class="theme-btn" href="index2.html">
-                                                                            Multi Page
-                                                                        </a>
-                                                                        <a class="theme-btn"
-                                                                            href="index-two-page.html">
-                                                                            One Page
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center homemenu-content">
-                                                                    <h4 class="homemenu-title">Home 02</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="homemenu">
-                                                                <div class="homemenu-thumb mb-15">
-                                                                    <img src="{{ asset('assets/images/header/home-3.png') }}"
-                                                                        alt="img">
-                                                                    <div class="demo-button">
-                                                                        <a class="theme-btn" href="index3.html">
-                                                                            Multi Page
-                                                                        </a>
-                                                                        <a class="theme-btn"
-                                                                            href="index-three-page.html">
-                                                                            One Page
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center homemenu-content">
-                                                                    <h4 class="homemenu-title">Home 03</h4>
-                                                                </div>
-                                                            </div>
-                                                            <div class="homemenu">
-                                                                <div class="homemenu-thumb mb-15">
-                                                                    <img src="{{ asset('assets/images/header/home-4.png') }}"
-                                                                        alt="img">
-                                                                    <div class="demo-button">
-                                                                        <a class="theme-btn" href="index4.html">
-                                                                            Multi Page
-                                                                        </a>
-                                                                        <a class="theme-btn"
-                                                                            href="index-four-page.html">
-                                                                            One Page
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="text-center homemenu-content">
-                                                                    <h4 class="homemenu-title">Home 04</h4>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul>
+
                                             </li>
                                             <li class="has-dropdown active d-xl-none">
                                                 <a href="index.html" class="border-none">
@@ -297,16 +220,16 @@
                                                 </ul> --}}
                                             </li>
                                             <li>
-                                                <a href="blog.html">
+                                                <a href="{{ route('blogs') }}">
                                                     Blog
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu">
+                                                {{-- <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li>
                                                         <a href="blog-details.html">Blog Details</a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li>
                                                 <a href="contact.html">Contact</a>

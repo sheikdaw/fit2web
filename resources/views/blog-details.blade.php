@@ -88,52 +88,21 @@
                         </div>
                         <div class="comment-part">
                             <div class="comment-header">
-                                <h5><a href="blog-details.html"> <i class="fa-solid fa-angle-left"></i> Previous post </a>
-                                </h5>
-                                <h5> <a href="blog-details.html"> Next post<i class="fa-solid fa-angle-right"></i> </a>
-                                </h5>
-                            </div>
-                            <div class="comment-title">
-                                <h4>2 Comment</h4>
-                            </div>
-                            <div class="comment-items">
-                                <div class="itens-thumb">
-                                    <img src="assets/images/blog/blogPostThumb2_5.png" alt="">
-                                </div>
-                                <div class="items-content">
-                                    <h4>Wade Warren</h4>
-                                    <p>ished fact that a reader will be distrol acted bioii the.ished fact that a reader
-                                        will be distrol acted laoreet Aliquam </p>
-                                    <div class="content-meta">
-                                        <span>October 12, 2024</span>
-                                        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="11"
-                                                height="11" viewBox="0 0 11 11" fill="none">
-                                                <path
-                                                    d="M4.5 9L0 4.5L4.5 0V3C11 3 11.5 9 8 11C9.37814 5.5 6 5.83333 4.5 6V9Z"
-                                                    fill="#6B66C6" />
-                                            </svg>Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment-part">
-                                <div class="comment-header">
-                                    {{-- Previous Post --}}
-                                    @if ($previous)
-                                        <h5><a href="{{ route('blog', ['id' => $previous->id]) }}">
-                                                <i class="fa-solid fa-angle-left"></i> Previous Post:
-                                                {{ $previous->title_1 }}
-                                            </a></h5>
-                                    @endif
+                                {{-- Previous Post --}}
+                                @if ($previous)
+                                    <h5><a href="{{ route('blog', ['id' => $previous->id]) }}">
+                                            <i class="fa-solid fa-angle-left"></i> Previous Post:
+                                            {{ $previous->title_1 }}
+                                        </a></h5>
+                                @endif
 
-                                    {{-- Next Post --}}
-                                    @if ($next)
-                                        <h5><a href="{{ route('blog', ['id' => $next->id]) }}">
-                                                Next Post: {{ $next->title_1 }} <i class="fa-solid fa-angle-right"></i>
-                                            </a></h5>
-                                    @endif
-                                </div>
+                                {{-- Next Post --}}
+                                @if ($next)
+                                    <h5><a href="{{ route('blog', ['id' => $next->id]) }}">
+                                            Next Post: {{ $next->title_1 }} <i class="fa-solid fa-angle-right"></i>
+                                        </a></h5>
+                                @endif
                             </div>
-
                         </div>
                     </div>
                     <div class="contact-items">

@@ -60,6 +60,7 @@
                             </div>
                         </div>
                     @endforeach
+
                 </div>
             @endif
         </div>
@@ -211,70 +212,60 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <!-- Hidden ID Field -->
                         <input type="hidden" id="update_blog_id" name="id">
 
                         <!-- Blog Name -->
                         <div class="mb-3">
                             <label for="update_blog_name" class="form-label">Blog Name</label>
                             <input type="text" class="form-control" id="update_blog_name" name="blog_name" required>
-                            <div class="invalid-feedback">Please enter a blog name.</div>
                         </div>
 
-                        <!-- Blog Type -->
+                        <!-- Type -->
                         <div class="mb-3">
                             <label for="update_type" class="form-label">Type</label>
                             <input type="text" class="form-control" id="update_type" name="type" required>
-                            <div class="invalid-feedback">Please enter a blog type.</div>
                         </div>
 
                         <!-- Title 1 -->
                         <div class="mb-3">
                             <label for="update_title_1" class="form-label">Title 1</label>
                             <input type="text" class="form-control" id="update_title_1" name="title_1" required>
-                            <div class="invalid-feedback">Please enter title 1.</div>
                         </div>
 
                         <!-- Title 2 -->
                         <div class="mb-3">
                             <label for="update_title_2" class="form-label">Title 2</label>
                             <input type="text" class="form-control" id="update_title_2" name="title_2" required>
-                            <div class="invalid-feedback">Please enter title 2.</div>
                         </div>
 
                         <!-- Paragraph 1 -->
                         <div class="mb-3">
                             <label for="update_paragraph_1" class="form-label">Paragraph 1</label>
                             <textarea class="form-control" id="update_paragraph_1" name="paragraph_1" required></textarea>
-                            <div class="invalid-feedback">Please enter paragraph 1.</div>
                         </div>
 
                         <!-- Paragraph 2 -->
                         <div class="mb-3">
                             <label for="update_paragraph_2" class="form-label">Paragraph 2</label>
                             <textarea class="form-control" id="update_paragraph_2" name="paragraph_2" required></textarea>
-                            <div class="invalid-feedback">Please enter paragraph 2.</div>
                         </div>
 
                         <!-- Paragraph 3 -->
                         <div class="mb-3">
                             <label for="update_paragraph_3" class="form-label">Paragraph 3</label>
                             <textarea class="form-control" id="update_paragraph_3" name="paragraph_3" required></textarea>
-                            <div class="invalid-feedback">Please enter paragraph 3.</div>
                         </div>
 
                         <!-- Date -->
                         <div class="mb-3">
                             <label for="update_date" class="form-label">Date</label>
                             <input type="date" class="form-control" id="update_date" name="date" required>
-                            <div class="invalid-feedback">Please select a date.</div>
                         </div>
 
                         <!-- Category -->
                         <div class="mb-3">
                             <label for="update_category" class="form-label">Category</label>
                             <input type="text" class="form-control" id="update_category" name="category" required>
-                            <div class="invalid-feedback">Please enter a category.</div>
                         </div>
 
                         <!-- Customer Name -->
@@ -282,74 +273,12 @@
                             <label for="update_customer_name" class="form-label">Customer Name</label>
                             <input type="text" class="form-control" id="update_customer_name" name="customer_name"
                                 required>
-                            <div class="invalid-feedback">Please enter a customer name.</div>
                         </div>
 
-                        <!-- Advantages (JSON Format) -->
+                        <!-- Advantages -->
                         <div class="mb-3">
                             <label for="update_advantages" class="form-label">Advantages (JSON Format)</label>
-                            <textarea class="form-control" id="update_advantages" name="advantages[]" required></textarea>
-                            <div class="invalid-feedback">Please enter advantages in JSON format.</div>
-                        </div>
-
-                        <!-- Created By -->
-                        <div class="mb-3">
-                            <label for="update_created_by" class="form-label">Created By</label>
-                            <input type="text" class="form-control" id="update_created_by" name="created_by"
-                                required>
-                            <div class="invalid-feedback">Please enter the creator's name.</div>
-                        </div>
-
-                        <!-- Testimonial Paragraph -->
-                        <div class="mb-3">
-                            <label for="update_testimonial_phara" class="form-label">Testimonial Paragraph</label>
-                            <textarea class="form-control" id="update_testimonial_phara" name="testimonial_phara" required></textarea>
-                            <div class="invalid-feedback">Please enter a testimonial paragraph.</div>
-                        </div>
-
-                        <!-- Testimonial Name -->
-                        <div class="mb-3">
-                            <label for="update_testimonial_name" class="form-label">Testimonial Name</label>
-                            <input type="text" class="form-control" id="update_testimonial_name"
-                                name="testimonial_name" required>
-                            <div class="invalid-feedback">Please enter a testimonial name.</div>
-                        </div>
-
-                        <!-- Testimonial By -->
-                        <div class="mb-3">
-                            <label for="update_testimonial_by" class="form-label">Testimonial By</label>
-                            <input type="text" class="form-control" id="update_testimonial_by" name="testimonial_by"
-                                required>
-                            <div class="invalid-feedback">Please enter the name of the person giving the testimonial.</div>
-                        </div>
-
-                        <!-- Tags -->
-                        <div class="mb-3">
-                            <label for="update_tags" class="form-label">Tags</label>
-                            <input type="text" class="form-control" id="update_tags" name="tags" required>
-                            <div class="invalid-feedback">Please enter tags.</div>
-                        </div>
-
-                        <!-- Project Summary -->
-                        <div class="mb-3">
-                            <label for="update_project_summary" class="form-label">Project Summary</label>
-                            <textarea class="form-control" id="update_project_summary" name="project_summary" required></textarea>
-                            <div class="invalid-feedback">Please enter a project summary.</div>
-                        </div>
-
-                        <!-- Rating -->
-                        <div class="mb-3">
-                            <label for="update_rating" class="form-label">Rating</label>
-                            <input type="number" class="form-control" id="update_rating" name="rating" required>
-                            <div class="invalid-feedback">Please enter a rating.</div>
-                        </div>
-
-                        <!-- Ordered By -->
-                        <div class="mb-3">
-                            <label for="update_ordered_by" class="form-label">Ordered By</label>
-                            <input type="text" class="form-control" id="update_ordered_by" name="ordered_by"
-                                required>
-                            <div class="invalid-feedback">Please enter the orderer's name.</div>
+                            <textarea class="form-control" id="update_advantages" name="advantages" required></textarea>
                         </div>
 
                         <!-- Image Fields -->
@@ -358,21 +287,7 @@
                             <input type="file" class="form-control" id="update_image_1" name="image_1"
                                 accept="image/*">
                         </div>
-                        <div class="mb-3">
-                            <label for="update_image_2" class="form-label">Image 2</label>
-                            <input type="file" class="form-control" id="update_image_2" name="image_2"
-                                accept="image/*">
-                        </div>
-                        <div class="mb-3">
-                            <label for="update_image_3" class="form-label">Image 3</label>
-                            <input type="file" class="form-control" id="update_image_3" name="image_3"
-                                accept="image/*">
-                        </div>
-                        <div class="mb-3">
-                            <label for="update_image_4" class="form-label">Image 4</label>
-                            <input type="file" class="form-control" id="update_image_4" name="image_4"
-                                accept="image/*">
-                        </div>
+                        <!-- Repeat for other image fields -->
 
                     </div>
                     <div class="modal-footer">
@@ -446,7 +361,7 @@
                 $("#update_category").val(data.category);
                 $("#update_customer_name").val(data.customer_name);
                 $("#update_advantages").val(JSON.stringify(data
-                .advantages)); // Convert JSON to string format
+                    .advantages)); // Convert JSON to string format
                 $("#update_project_summary").val(data.project_summary);
                 $("#update_rating").val(data.rating);
                 $("#update_ordered_by").val(data.ordered_by);
@@ -458,7 +373,7 @@
                 // Set image paths if they exist
                 if (data.image_1) {
                     $("#update_image_1").attr("data-image-path", data
-                    .image_1); // Optionally store image path in a custom attribute
+                        .image_1); // Optionally store image path in a custom attribute
                 }
                 if (data.image_2) {
                     $("#update_image_2").attr("data-image-path", data.image_2);
@@ -473,6 +388,35 @@
                 // Show the modal
                 $("#updateBlogModal").modal("show");
             });
+            $(".editBlog").on("click", function() {
+                const data = $(this).data(); // Get the data attributes from the clicked element
+
+                // Set form field values using data attributes
+                $("#update_blog_id").val(data.id);
+                $("#update_blog_name").val(data.blog_name);
+                $("#update_type").val(data.type);
+                $("#update_title_1").val(data.title_1);
+                $("#update_title_2").val(data.title_2);
+                $("#update_paragraph_1").val(data.paragraph_1);
+                $("#update_paragraph_2").val(data.paragraph_2);
+                $("#update_paragraph_3").val(data.paragraph_3);
+                $("#update_date").val(data.date);
+                $("#update_category").val(data.category);
+                $("#update_customer_name").val(data.customer_name);
+                $("#update_advantages").val(data.advantages); // Should be a stringified JSON
+
+                // Set image paths if they exist
+                if (data.image_1) {
+                    $("#update_image_1").attr("data-image-path", data.image_1); // Optional to store path
+                }
+                if (data.image_2) {
+                    $("#update_image_2").attr("data-image-path", data.image_2);
+                }
+
+                // Show the modal
+                $("#updateBlogModal").modal("show");
+            });
+
 
 
 

@@ -53,6 +53,9 @@
                         @endforeach
                     </div>
                     <div class="pagination_area style1">
+                        {{ $blogs->links('vendor.pagination.bootstrap-5') }}
+                    </div>
+                    {{-- <div class="pagination_area style1">
                         <ul class="pagination">
                             <li class="page-item">
                             </li>
@@ -65,7 +68,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-xl-4">
                     <div class="main-sidebar2">

@@ -4,83 +4,80 @@
     <div class="container">
         <div class="row">
             <div class="mt-5 mb-3 col-12 text-end">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProjectModal">
-                    Add Project
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addBlogModal">
+                    Add Blog
                 </button>
             </div>
-            @if ($projects->isEmpty())
+            @if ($blogs->isEmpty())
                 <div class="col-12">
                     <div class="text-center alert alert-warning" role="alert">
-                        No projects found.
+                        No blogs found.
                     </div>
                 </div>
             @else
-                <div class="row show-projects">
-                    @foreach ($projects as $project)
+                <div class="row show-blogs">
+                    @foreach ($blogs as $blog)
                         <div class="col-md-4">
                             <div class="mb-4 shadow-sm card">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $project->project_name }}</h5>
+                                    <h5 class="card-title">{{ $blog->blog_name }}</h5>
                                     <p class="card-text">
-                                        <strong>Type:</strong> {{ $project->type }} <br>
-                                        <strong>Start Date:</strong> {{ $project->start_date }} <br>
-                                        <strong>End Date:</strong> {{ $project->end_date }} <br>
-                                        <strong>Category:</strong> {{ $project->category }} <br>
-                                        <strong>Customer:</strong> {{ $project->customer_name }} <br>
-                                        <strong>Rating:</strong> {{ $project->rating }} <br>
-                                        @if (!empty($project->advantages) && is_array($project->advantages))
+                                        <strong>Type:</strong> {{ $blog->type }} <br>
+                                        <strong>Date:</strong> {{ $blog->date }} <br>
+                                        <strong>Category:</strong> {{ $blog->category }} <br>
+                                        <strong>Customer:</strong> {{ $blog->customer_name }} <br>
+                                        <strong>Rating:</strong> {{ $blog->rating }} <br>
+                                        @if (!empty($blog->advantages) && is_array($blog->advantages))
                                             <ul>
-                                                @foreach ($project->advantages as $advantage)
+                                                @foreach ($blog->advantages as $advantage)
                                                     <li>{{ $advantage }}</li>
                                                 @endforeach
                                             </ul>
                                         @endif
                                     </p>
-                                    <button class="btn btn-primary editProject" data-id="{{ $project->id }}"
-                                        data-project_name="{{ $project->project_name }}" data-type="{{ $project->type }}"
-                                        data-title_1="{{ $project->title_1 }}" data-title_2="{{ $project->title_2 }}"
-                                        data-paragraph_1="{{ $project->paragraph_1 }}"
-                                        data-paragraph_2="{{ $project->paragraph_2 }}"
-                                        data-start_date="{{ $project->start_date }}"
-                                        data-end_date="{{ $project->end_date }}" data-category="{{ $project->category }}"
-                                        data-customer_name="{{ $project->customer_name }}"
-                                        data-advantages="{{ json_encode($project->advantages) }}"
-                                        data-project_summary="{{ $project->project_summary }}"
-                                        data-rating="{{ $project->rating }}" data-ordered_by="{{ $project->ordered_by }}">
+                                    <button class="btn btn-primary editBlog" data-id="{{ $blog->id }}"
+                                        data-blog_name="{{ $blog->blog_name }}" data-type="{{ $blog->type }}"
+                                        data-title_1="{{ $blog->title_1 }}" data-title_2="{{ $blog->title_2 }}"
+                                        data-paragraph_1="{{ $blog->paragraph_1 }}"
+                                        data-paragraph_2="{{ $blog->paragraph_2 }}" data-date="{{ $blog->date }}"
+                                        data-category="{{ $blog->category }}"
+                                        data-customer_name="{{ $blog->customer_name }}"
+                                        data-advantages="{{ json_encode($blog->advantages) }}"
+                                        data-project_summary="{{ $blog->project_summary }}"
+                                        data-rating="{{ $blog->rating }}">
                                         Update
                                     </button>
-                                    <button class="btn btn-danger delete-project"
-                                        data-id="{{ $project->id }}">Delete</button>
+                                    <button class="btn btn-danger delete-blog"
+                                        data-id="{{ $blog->id }}">Delete</button>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
                 </div>
             @endif
         </div>
     </div>
 
-    <!-- Modal for Adding Project -->
-    <div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+    <!-- Modal for Adding Blog -->
+    <div class="modal fade" id="addBlogModal" tabindex="-1" aria-labelledby="addBlogModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="addProjectForm" novalidate>
+                <form id="addBlogForm" novalidate>
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addProjectModalLabel">Add New Project</h5>
+                        <h5 class="modal-title" id="addBlogModalLabel">Add New Blog</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="project_name" class="form-label">Project Name</label>
-                            <input type="text" class="form-control" id="project_name" name="project_name" required>
-                            <div class="invalid-feedback">Please enter a project name.</div>
+                            <label for="blog_name" class="form-label">Blog Name</label>
+                            <input type="text" class="form-control" id="blog_name" name="blog_name" required>
+                            <div class="invalid-feedback">Please enter a blog name.</div>
                         </div>
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
                             <input type="text" class="form-control" id="type" name="type" required>
-                            <div class="invalid-feedback">Please enter a project type.</div>
+                            <div class="invalid-feedback">Please enter a blog type.</div>
                         </div>
                         <div class="mb-3">
                             <label for="title_1" class="form-label">Title 1</label>
@@ -103,14 +100,14 @@
                             <div class="invalid-feedback">Please enter paragraph 2.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="start_date" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="start_date" name="start_date" required>
-                            <div class="invalid-feedback">Please select a start date.</div>
+                            <label for="paragraph_3" class="form-label">Paragraph 3</label>
+                            <textarea class="form-control" id="paragraph_3" name="paragraph_3" required></textarea>
+                            <div class="invalid-feedback">Please enter paragraph 3.</div>
                         </div>
                         <div class="mb-3">
-                            <label for="end_date" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="end_date" name="end_date" required>
-                            <div class="invalid-feedback">Please select an end date.</div>
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
+                            <div class="invalid-feedback">Please select a date.</div>
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
@@ -128,6 +125,33 @@
                             <div class="invalid-feedback">Please enter advantages in JSON format.</div>
                         </div>
                         <div class="mb-3">
+                            <label for="created_by" class="form-label">Created By</label>
+                            <input type="text" class="form-control" id="created_by" name="created_by" required>
+                            <div class="invalid-feedback">Please enter the creator's name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="testimonial_phara" class="form-label">Testimonial Paragraph</label>
+                            <textarea class="form-control" id="testimonial_phara" name="testimonial_phara" required></textarea>
+                            <div class="invalid-feedback">Please enter a testimonial paragraph.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="testimonial_name" class="form-label">Testimonial Name</label>
+                            <input type="text" class="form-control" id="testimonial_name" name="testimonial_name"
+                                required>
+                            <div class="invalid-feedback">Please enter a testimonial name.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="testimonial_by" class="form-label">Testimonial By</label>
+                            <input type="text" class="form-control" id="testimonial_by" name="testimonial_by"
+                                required>
+                            <div class="invalid-feedback">Please enter the name of the person giving the testimonial.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="tags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="tags" name="tags" required>
+                            <div class="invalid-feedback">Please enter tags.</div>
+                        </div>
+                        <div class="mb-3">
                             <label for="project_summary" class="form-label">Project Summary</label>
                             <textarea class="form-control" id="project_summary" name="project_summary" required></textarea>
                             <div class="invalid-feedback">Please enter a project summary.</div>
@@ -136,6 +160,11 @@
                             <label for="rating" class="form-label">Rating</label>
                             <input type="number" class="form-control" id="rating" name="rating" required>
                             <div class="invalid-feedback">Please enter a rating.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ordered_by" class="form-label">Ordered By</label>
+                            <input type="text" class="form-control" id="ordered_by" name="ordered_by" required>
+                            <div class="invalid-feedback">Please enter who ordered this blog.</div>
                         </div>
                         <div class="mb-3">
                             <label for="image_1" class="form-label">Image 1</label>
@@ -149,7 +178,10 @@
                             <label for="image_3" class="form-label">Image 3</label>
                             <input type="file" class="form-control" id="image_3" name="image_3" accept="image/*">
                         </div>
-
+                        <div class="mb-3">
+                            <label for="image_4" class="form-label">Image 4</label>
+                            <input type="file" class="form-control" id="image_4" name="image_4" accept="image/*">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -160,34 +192,32 @@
         </div>
     </div>
 
-    {{-- Model for updating project details --}}
-    <div class="modal fade" id="updateProjectModal" tabindex="-1" aria-labelledby="updateProjectModalLabel"
+    <div class="modal fade" id="updateBlogModal" tabindex="-1" aria-labelledby="updateBlogModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="updateProjectForm" enctype="multipart/form-data" novalidate>
+                <form id="updateBlogForm" enctype="multipart/form-data" novalidate>
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updateProjectModalLabel">Update Project</h5>
+                        <h5 class="modal-title" id="updateBlogModalLabel">Update Blog</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <!-- Hidden ID Field -->
-                        <input type="hidden" id="update_project_id" name="id">
+                        <input type="hidden" id="update_blog_id" name="id">
 
-                        <!-- Project Name -->
+                        <!-- Blog Name -->
                         <div class="mb-3">
-                            <label for="update_project_name" class="form-label">Project Name</label>
-                            <input type="text" class="form-control" id="update_project_name" name="project_name"
-                                required>
-                            <div class="invalid-feedback">Please enter a project name.</div>
+                            <label for="update_blog_name" class="form-label">Blog Name</label>
+                            <input type="text" class="form-control" id="update_blog_name" name="blog_name" required>
+                            <div class="invalid-feedback">Please enter a blog name.</div>
                         </div>
 
-                        <!-- Project Type -->
+                        <!-- Blog Type -->
                         <div class="mb-3">
                             <label for="update_type" class="form-label">Type</label>
                             <input type="text" class="form-control" id="update_type" name="type" required>
-                            <div class="invalid-feedback">Please enter a project type.</div>
+                            <div class="invalid-feedback">Please enter a blog type.</div>
                         </div>
 
                         <!-- Title 1 -->
@@ -218,19 +248,18 @@
                             <div class="invalid-feedback">Please enter paragraph 2.</div>
                         </div>
 
-                        <!-- Start Date -->
+                        <!-- Paragraph 3 -->
                         <div class="mb-3">
-                            <label for="update_start_date" class="form-label">Start Date</label>
-                            <input type="date" class="form-control" id="update_start_date" name="start_date"
-                                required>
-                            <div class="invalid-feedback">Please select a start date.</div>
+                            <label for="update_paragraph_3" class="form-label">Paragraph 3</label>
+                            <textarea class="form-control" id="update_paragraph_3" name="paragraph_3" required></textarea>
+                            <div class="invalid-feedback">Please enter paragraph 3.</div>
                         </div>
 
-                        <!-- End Date -->
+                        <!-- Date -->
                         <div class="mb-3">
-                            <label for="update_end_date" class="form-label">End Date</label>
-                            <input type="date" class="form-control" id="update_end_date" name="end_date" required>
-                            <div class="invalid-feedback">Please select an end date.</div>
+                            <label for="update_date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="update_date" name="date" required>
+                            <div class="invalid-feedback">Please select a date.</div>
                         </div>
 
                         <!-- Category -->
@@ -255,6 +284,44 @@
                             <div class="invalid-feedback">Please enter advantages in JSON format.</div>
                         </div>
 
+                        <!-- Created By -->
+                        <div class="mb-3">
+                            <label for="update_created_by" class="form-label">Created By</label>
+                            <input type="text" class="form-control" id="update_created_by" name="created_by"
+                                required>
+                            <div class="invalid-feedback">Please enter the creator's name.</div>
+                        </div>
+
+                        <!-- Testimonial Paragraph -->
+                        <div class="mb-3">
+                            <label for="update_testimonial_phara" class="form-label">Testimonial Paragraph</label>
+                            <textarea class="form-control" id="update_testimonial_phara" name="testimonial_phara" required></textarea>
+                            <div class="invalid-feedback">Please enter a testimonial paragraph.</div>
+                        </div>
+
+                        <!-- Testimonial Name -->
+                        <div class="mb-3">
+                            <label for="update_testimonial_name" class="form-label">Testimonial Name</label>
+                            <input type="text" class="form-control" id="update_testimonial_name"
+                                name="testimonial_name" required>
+                            <div class="invalid-feedback">Please enter a testimonial name.</div>
+                        </div>
+
+                        <!-- Testimonial By -->
+                        <div class="mb-3">
+                            <label for="update_testimonial_by" class="form-label">Testimonial By</label>
+                            <input type="text" class="form-control" id="update_testimonial_by" name="testimonial_by"
+                                required>
+                            <div class="invalid-feedback">Please enter the name of the person giving the testimonial.</div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="mb-3">
+                            <label for="update_tags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="update_tags" name="tags" required>
+                            <div class="invalid-feedback">Please enter tags.</div>
+                        </div>
+
                         <!-- Project Summary -->
                         <div class="mb-3">
                             <label for="update_project_summary" class="form-label">Project Summary</label>
@@ -269,30 +336,39 @@
                             <div class="invalid-feedback">Please enter a rating.</div>
                         </div>
 
-                        <!-- Image 1 -->
+                        <!-- Ordered By -->
+                        <div class="mb-3">
+                            <label for="update_ordered_by" class="form-label">Ordered By</label>
+                            <input type="text" class="form-control" id="update_ordered_by" name="ordered_by"
+                                required>
+                            <div class="invalid-feedback">Please enter the orderer's name.</div>
+                        </div>
+
+                        <!-- Image Fields -->
                         <div class="mb-3">
                             <label for="update_image_1" class="form-label">Image 1</label>
                             <input type="file" class="form-control" id="update_image_1" name="image_1"
                                 accept="image/*">
                         </div>
-
-                        <!-- Image 2 -->
                         <div class="mb-3">
                             <label for="update_image_2" class="form-label">Image 2</label>
                             <input type="file" class="form-control" id="update_image_2" name="image_2"
                                 accept="image/*">
                         </div>
-
-                        <!-- Image 3 -->
                         <div class="mb-3">
                             <label for="update_image_3" class="form-label">Image 3</label>
                             <input type="file" class="form-control" id="update_image_3" name="image_3"
                                 accept="image/*">
                         </div>
+                        <div class="mb-3">
+                            <label for="update_image_4" class="form-label">Image 4</label>
+                            <input type="file" class="form-control" id="update_image_4" name="image_4"
+                                accept="image/*">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                 </form>
             </div>
@@ -300,25 +376,23 @@
     </div>
 
 
+
     <script>
         $(document).ready(function() {
             const routes = {
-                projectStore: "{{ route('admin.store-project') }}",
-                projectUpdate: "{{ route('admin.projectUpdate') }}",
-                projectDelete: "{{ route('admin.project.destroy', 'ID_PLACEHOLDER') }}",
+                blogStore: "{{ route('admin.store-blog') }}",
+                blogUpdate: "{{ route('admin.blogUpdate') }}",
+                blogDelete: "{{ route('admin.blog.destroy', 'ID_PLACEHOLDER') }}",
             };
 
-            // Add Project
-            $("#addProjectForm").on("submit", function(event) {
-                alert("hi");
+            // Add Blog
+            $("#addBlogForm").on("submit", function(event) {
                 event.preventDefault();
 
-                // Gather form data
                 var formData = new FormData(this);
 
-                // Send AJAX request
                 $.ajax({
-                    url: routes.projectStore,
+                    url: routes.blogStore,
                     type: "POST",
                     data: formData,
                     processData: false,
@@ -327,11 +401,10 @@
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
                     success: function(response) {
-                        $("#addProjectModal").modal("hide");
-                        $("#addProjectForm")[0].reset();
-                        alert("hi");
+                        $("#addBlogModal").modal("hide");
+                        $("#addBlogForm")[0].reset();
                         showFlashMessage(response.message, "success");
-                        // location.reload(); // Reload to reflect the updated project list
+                        // location.reload(); // Reload to reflect the updated blog list
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {
@@ -348,36 +421,41 @@
                 });
             });
 
-            // Edit Project (populate modal fields with existing data)
-            $(".editProject").on("click", function() {
+            // Edit Blog (populate modal fields with existing data)
+            $(".editBlog").on("click", function() {
                 const data = $(this).data();
 
-                $("#update_project_id").val(data.id);
-                $("#update_project_name").val(data.project_name);
+                $("#update_blog_id").val(data.id);
+                $("#update_blog_name").val(data.blog_name);
                 $("#update_type").val(data.type);
                 $("#update_title_1").val(data.title_1);
                 $("#update_title_2").val(data.title_2);
                 $("#update_paragraph_1").val(data.paragraph_1);
                 $("#update_paragraph_2").val(data.paragraph_2);
-                $("#update_start_date").val(data.start_date);
-                $("#update_end_date").val(data.end_date);
+                $("#update_paragraph_3").val(data.paragraph_3);
+                $("#update_date").val(data.date);
                 $("#update_category").val(data.category);
                 $("#update_customer_name").val(data.customer_name);
                 $("#update_advantages").val(JSON.stringify(data.advantages)); // Ensure JSON format
                 $("#update_project_summary").val(data.project_summary);
                 $("#update_rating").val(data.rating);
+                $("#update_ordered_by").val(data.ordered_by);
+                $("#update_testimonial_phara").val(data.testimonial_phara);
+                $("#update_testimonial_name").val(data.testimonial_name);
+                $("#update_testimonial_by").val(data.testimonial_by);
+                $("#update_tags").val(data.tags);
 
-                $("#updateProjectModal").modal("show");
+                $("#updateBlogModal").modal("show");
             });
 
-            // Update Project
-            $("#updateProjectForm").on("submit", function(event) {
+            // Update Blog
+            $("#updateBlogForm").on("submit", function(event) {
                 event.preventDefault();
 
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: routes.projectUpdate, // Replace with your route name or URL
+                    url: routes.blogUpdate, // Replace with your route name or URL
                     type: "POST",
                     data: formData,
                     processData: false,
@@ -386,17 +464,14 @@
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
                     success: function(response) {
-                        // Hide the modal and show a success message
-                        $("#updateProjectModal").modal("hide");
+                        $("#updateBlogModal").modal("hide");
                         showFlashMessage(response.message, "success");
                         // location.reload(); // Reload the page to reflect changes
                     },
                     error: function(xhr) {
-                        // Log the full error response for debugging
                         console.error("Error Response:", xhr);
 
                         if (xhr.status === 422) {
-                            // Validation error handling
                             const errors = xhr.responseJSON.errors;
                             for (const key in errors) {
                                 const input = $(`#update_${key}`);
@@ -404,43 +479,38 @@
                                 input.next(".invalid-feedback").text(errors[key][0]);
                             }
                         } else {
-                            // Unexpected error handling
                             alert("An unexpected error occurred. Please try again.");
                         }
                     },
                 });
             });
 
-            // Delete Project
-            $(".delete-project").on("click", function() {
-                const projectId = $(this).data("id");
+            // Delete Blog
+            $(".delete-blog").on("click", function() {
+                const blogId = $(this).data("id");
 
-                if (confirm("Are you sure you want to delete this project?")) {
+                if (confirm("Are you sure you want to delete this blog?")) {
                     $.ajax({
-                        url: routes.projectDelete.replace("ID_PLACEHOLDER", projectId),
+                        url: routes.blogDelete.replace("ID_PLACEHOLDER", blogId),
                         type: "DELETE",
                         headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                                "content"), // Ensure token is included
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                         },
                         success: function(response) {
-                            alert(response
-                                .message); // Or use a custom flash message display function
+                            alert(response.message);
                             location.reload(); // Reload the page to reflect the deletion
                         },
                         error: function(xhr, status, error) {
                             if (xhr.status === 419) {
                                 alert(
-                                    "CSRF token mismatch. Please refresh the page and try again."
-                                    );
+                                    "CSRF token mismatch. Please refresh the page and try again.");
                             } else {
-                                alert("Failed to delete the project. Please try again.");
+                                alert("Failed to delete the blog. Please try again.");
                             }
                         },
                     });
                 }
             });
-
 
             // Helper: Show Flash Message
             function showFlashMessage(message, type) {
@@ -457,5 +527,6 @@
             }
         });
     </script>
+
 
 @endsection

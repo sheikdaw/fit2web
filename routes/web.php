@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ViewController;
@@ -25,4 +26,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/projects', [ProjectController::class, 'store'])->name('admin.store-project');
     Route::post('/admin/update-project', [ProjectController::class, 'update'])->name('admin.projectUpdate');
     Route::delete('admin/project/{id}', [ProjectController::class, 'destroy'])->name('admin.project.destroy');
+
+    // Store a new blog
+    Route::post('/admin/store-blog', [BlogController::class, 'store'])->name('admin.store-blog');
+
+    // Update an existing blog
+    Route::post('/admin/update-blog', [BlogController::class, 'update'])->name('admin.blogUpdate');
+
+    // Delete a blog
+    Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy'])->name('admin.blog.destroy');
 });

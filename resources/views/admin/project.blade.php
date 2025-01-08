@@ -329,6 +329,7 @@
                     success: function(response) {
                         $("#addProjectModal").modal("hide");
                         $("#addProjectForm")[0].reset();
+                        alert("hi");
                         showFlashMessage(response.message, "success");
                         // location.reload(); // Reload to reflect the updated project list
                     },

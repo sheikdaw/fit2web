@@ -25,7 +25,7 @@
                         @foreach ($blogs as $blog)
                             <div class="single-blog-post">
                                 <div class="post-featured-thumb">
-                                    <img src="{{ asset('assets/images/blog/blogThumb1_1.png') }}" alt="thumb">
+                                    <img src="{{ asset($blog->image_1) }}" alt="thumb">
                                     <div class="content-date">
                                         <h4>{{ \Carbon\Carbon::parse($blog->date)->format('d F Y') }}</h4>
                                     </div>
@@ -52,8 +52,9 @@
                             </div>
                         @endforeach
                     </div>
+
                     <div class="pagination_area style1">
-                        {{ $blogs->links('vendor.pagination.bootstrap-5') }}
+                        {{ $blogs->links('pagination::bootstrap-5') }}
                     </div>
                     {{-- <div class="pagination_area style1">
                         <ul class="pagination">

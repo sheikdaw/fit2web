@@ -199,6 +199,7 @@
         </div>
     </div>
 
+    <!-- Modal to Update Blog -->
     <div class="modal fade" id="updateBlogModal" tabindex="-1" aria-labelledby="updateBlogModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -284,11 +285,49 @@
                             <div class="invalid-feedback">Please enter a customer name.</div>
                         </div>
 
-                        <!-- Advantages -->
+                        <!-- Advantages (JSON Format) -->
                         <div class="mb-3">
                             <label for="update_advantages" class="form-label">Advantages (JSON Format)</label>
                             <textarea class="form-control" id="update_advantages" name="advantages[]" required></textarea>
                             <div class="invalid-feedback">Please enter advantages in JSON format.</div>
+                        </div>
+
+                        <!-- Created By -->
+                        <div class="mb-3">
+                            <label for="update_created_by" class="form-label">Created By</label>
+                            <input type="text" class="form-control" id="update_created_by" name="created_by"
+                                required>
+                            <div class="invalid-feedback">Please enter the creator's name.</div>
+                        </div>
+
+                        <!-- Testimonial Paragraph -->
+                        <div class="mb-3">
+                            <label for="update_testimonial_phara" class="form-label">Testimonial Paragraph</label>
+                            <textarea class="form-control" id="update_testimonial_phara" name="testimonial_phara" required></textarea>
+                            <div class="invalid-feedback">Please enter a testimonial paragraph.</div>
+                        </div>
+
+                        <!-- Testimonial Name -->
+                        <div class="mb-3">
+                            <label for="update_testimonial_name" class="form-label">Testimonial Name</label>
+                            <input type="text" class="form-control" id="update_testimonial_name"
+                                name="testimonial_name" required>
+                            <div class="invalid-feedback">Please enter a testimonial name.</div>
+                        </div>
+
+                        <!-- Testimonial By -->
+                        <div class="mb-3">
+                            <label for="update_testimonial_by" class="form-label">Testimonial By</label>
+                            <input type="text" class="form-control" id="update_testimonial_by" name="testimonial_by"
+                                required>
+                            <div class="invalid-feedback">Please enter the name of the person giving the testimonial.</div>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="mb-3">
+                            <label for="update_tags" class="form-label">Tags</label>
+                            <input type="text" class="form-control" id="update_tags" name="tags" required>
+                            <div class="invalid-feedback">Please enter tags.</div>
                         </div>
 
                         <!-- Project Summary -->
@@ -334,6 +373,7 @@
                             <input type="file" class="form-control" id="update_image_4" name="image_4"
                                 accept="image/*">
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -343,6 +383,7 @@
             </div>
         </div>
     </div>
+
 
     <script>
         $(document).ready(function() {
@@ -409,6 +450,10 @@
                 $("#update_project_summary").val(data.project_summary);
                 $("#update_rating").val(data.rating);
                 $("#update_ordered_by").val(data.ordered_by);
+                $("#update_testimonial_phara").val(data.testimonial_phara);
+                $("#update_testimonial_name").val(data.testimonial_name);
+                $("#update_testimonial_by").val(data.testimonial_by);
+                $("#update_tags").val(data.tags);
 
                 // Set image paths if they exist
                 if (data.image_1) {
@@ -428,6 +473,7 @@
                 // Show the modal
                 $("#updateBlogModal").modal("show");
             });
+
 
 
             // Update Blog

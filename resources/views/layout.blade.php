@@ -220,10 +220,8 @@
                                                 </ul> --}}
                                             </li>
                                             <li>
-                                                <a href="{{ route('blogs') }}">
-                                                    Blog
+                                                <a href="{{ route('Blogs') }}">Blog</a>
 
-                                                </a>
                                                 {{-- <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>
                                                     <li>

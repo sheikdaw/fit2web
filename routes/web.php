@@ -13,7 +13,8 @@ Route::get('/project/{id}', [ProjectController::class, 'show'])->name('project')
 
 Route::get('/projects', [ProjectController::class, 'showProject'])->name('projects');
 
-Route::get('/Blogs', [BlogController::class, 'showBlogs'])->name('blogs');
+Route::get('/blogs', [BlogController::class, 'showBlogs'])->name('blogs');
+
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 
 // Define the logout route manually

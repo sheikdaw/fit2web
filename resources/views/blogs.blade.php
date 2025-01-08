@@ -31,46 +31,25 @@
                                     </div>
                                     <div class="content-meta">
                                         <ul>
-                                            <li>
-                                                <i class="fa-regular fa-user"></i>
-                                                {{ $blog->type }}
-                                            </li>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                {{ $blog->category }}
-                                            </li>
+                                            <li><i class="fa-regular fa-user"></i>{{ $blog->type }}</li>
+                                            <li><i class="fa-regular fa-folder-open"></i>{{ $blog->category }}</li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="post-content">
                                     <h3><a href="{{ route('blog', ['id' => $blog->id]) }}">{{ $blog->title_1 }}</a></h3>
                                     <p>{{ $blog->paragraph_1 }}</p>
-                                    <a href="{{ route('blog', ['id' => $blog->id]) }}">
-                                        Read More <i class="fa-solid fa-arrow-right"></i>
-                                    </a>
+                                    <a href="{{ route('blog', ['id' => $blog->id]) }}">Read More <i
+                                            class="fa-solid fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    <div class="mt-4 pagination-wrapper ">
+                    <div class="mt-4 pagination-wrapper">
                         {{ $blogs->links('pagination::bootstrap-5') }}
                     </div>
-
-                    {{-- <div class="pagination_area style1">
-                        <ul class="pagination">
-                            <li class="page-item">
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div> --}}
                 </div>
+
                 <div class="col-xl-4">
                     <div class="main-sidebar2">
                         <div class="single-sidebar-widget wow fadeInUp" data-wow-delay=".2s">

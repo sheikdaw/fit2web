@@ -485,7 +485,7 @@
 
                 $.ajax({
                     url: routes.blogUpdate, // Replace with your route name or URL
-                    type: "POST",
+                    type: "put",
                     data: formData,
                     processData: false,
                     contentType: false,

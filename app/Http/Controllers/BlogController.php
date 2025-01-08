@@ -204,4 +204,21 @@ class BlogController extends Controller
 
         return response()->json(['message' => 'Blog deleted successfully']);
     }
+
+
+    public function show($id)
+    {
+        $blog = Blog::findOrFail($id);
+        $previous = Blog::where('id', '<', $id)->orderBy('id', 'desc')->first();
+
+        // Fetch the next blog
+        $next = Blog::where('id', '>', $id)->orderBy('id', 'asc')->first();
+        $advantage = json_decode($blog->advantages, true); // Decode the string to an array
+        $tags = json_decode($blog->tags, true);
+        $advantage = json_decode($advantage[0], true);
+        $tags = json_decode($blog->tags, true);
+
+        // return response()->json($);
+        return view('blog-details', compact('blog', 'advantage', 'tags', 'next', 'advantage'));
+    }
 }

@@ -22,148 +22,35 @@
             <div class="row gy-5">
                 <div class="col-xl-8">
                     <div class="blog-post-details">
-                        <div class="single-blog-post">
-                            <div class="post-featured-thumb">
-                                <img src="assets/images/blog/blogThumb1_1.png" alt="thumb">
-                                <div class="content-date">
-                                    <h4>31 December,2024</h4>
+                        @foreach ($blogs as $blog)
+                            <div class="single-blog-post">
+                                <div class="post-featured-thumb">
+                                    <img src="{{ asset('assets/images/blog/blogThumb1_1.png') }}" alt="thumb">
+                                    <div class="content-date">
+                                        <h4>{{ \Carbon\Carbon::parse($blog->date)->format('d F Y') }}</h4>
+                                    </div>
+                                    <div class="content-meta">
+                                        <ul>
+                                            <li>
+                                                <i class="fa-regular fa-user"></i>
+                                                {{ $blog->type }}
+                                            </li>
+                                            <li>
+                                                <i class="fa-regular fa-folder-open"></i>
+                                                {{ $blog->category }}
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="content-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fa-regular fa-user"></i>
-                                            By admin
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-folder-open"></i>
-                                            Category
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-comments"></i>
-                                            Comments (05)
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <h3> <a href="blog-details.html"> This involves the use of computers, software, and networks
-                                    </a></h3>
-                                <p>Technology refers to the application of scientific knowledge for practical purposes,
-                                    particularly in industry and everyday life. It encompasses a broad range of tools,
-                                    machines, systems, and processes that are designed to solve problems
-                                </p>
-                                <a href="blog-details.html">Read More
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-blog-post">
-                            <div class="post-featured-thumb">
-                                <img src="assets/images/blog/blogThumb1_2.png" alt="thumb">
-                                <div class="content-date">
-                                    <h4>31 December,2024</h4>
-                                </div>
-                                <div class="content-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fa-regular fa-user"></i>
-                                            By admin
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-folder-open"></i>
-                                            Category
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-comments"></i>
-                                            Comments (05)
-                                        </li>
-                                    </ul>
+                                <div class="post-content">
+                                    <h3><a href="{{ route('blog', ['id' => $blog->id]) }}">{{ $blog->title_1 }}</a></h3>
+                                    <p>{{ $blog->paragraph_1 }}</p>
+                                    <a href="{{ route('blog', ['id' => $blog->id]) }}">
+                                        Read More <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="post-content">
-                                <h3> <a href="blog-details.html"> processing and distributing data Examples include the
-                                        internet </a>
-                                </h3>
-                                <p>Technology refers to the application of scientific knowledge for practical purposes,
-                                    particularly in industry and everyday life. It encompasses a broad range of tools,
-                                    machines, systems, and processes that are designed to solve problems
-                                </p>
-                                <a href="blog-details.html">Read More
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="single-blog-post">
-                            <div class="post-featured-thumb">
-                                <img src="assets/images/blog/blogThumb1_3.png" alt="thumb">
-                                <div class="content-date">
-                                    <h4>31 December,2024</h4>
-                                </div>
-                                <div class="content-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fa-regular fa-user"></i>
-                                            By admin
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-folder-open"></i>
-                                            Category
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-comments"></i>
-                                            Comments (05)
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <h3> <a href="blog-details.html"> Involves the use of living systems and organisms to
-                                        develop or create
-                                    </a></h3>
-                                <p>Technology refers to the application of scientific knowledge for practical purposes,
-                                    particularly in industry and everyday life. It encompasses a broad range of tools,
-                                    machines, systems, and processes that are designed to solve problems
-                                </p>
-                                <a href="blog-details.html">Read More
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="mb-0 single-blog-post">
-                            <div class="post-featured-thumb">
-                                <img src="assets/images/blog/blogThumb1_4.png" alt="thumb">
-                                <div class="content-date">
-                                    <h4>31 December,2024</h4>
-                                </div>
-                                <div class="content-meta">
-                                    <ul>
-                                        <li>
-                                            <i class="fa-regular fa-user"></i>
-                                            By admin
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-folder-open"></i>
-                                            Category
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-comments"></i>
-                                            Comments (05)
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <h3> <a href="blog-details.html"> The manipulation of matter on an atomic or molecular scale
-                                    </a></h3>
-                                <p>Technology refers to the application of scientific knowledge for practical purposes,
-                                    particularly in industry and everyday life. It encompasses a broad range of tools,
-                                    machines, systems, and processes that are designed to solve problems
-                                </p>
-                                <a href="blog-details.html">Read More
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="pagination_area style1">
                         <ul class="pagination">

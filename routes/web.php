@@ -14,6 +14,7 @@ Route::get('/project/{id}', [ProjectController::class, 'show'])->name('project')
 Route::get('/projects', [ProjectController::class, 'showProject'])->name('projects');
 
 Route::get('/blogs', [BlogController::class, 'showBlogs'])->name('blogs');
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog');
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 

@@ -389,7 +389,7 @@
                         // Hide the modal and show a success message
                         $("#updateProjectModal").modal("hide");
                         showFlashMessage(response.message, "success");
-                        location.reload(); // Reload the page to reflect changes
+                        // location.reload(); // Reload the page to reflect changes
                     },
                     error: function(xhr) {
                         // Log the full error response for debugging

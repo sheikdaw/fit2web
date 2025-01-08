@@ -389,7 +389,7 @@
                     success: function(response) {
                         $("#updateProjectModal").modal("hide");
                         showFlashMessage(response.message, "success");
-                        location.reload(); // Reload the page to reflect changes
+                        // location.reload(); // Reload the page to reflect changes
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {

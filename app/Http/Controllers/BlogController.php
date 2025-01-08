@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 class BlogController extends Controller
 {
 
+    public function showBlogs()
+    {
+        $blogs = Blog::paginate(10);
+
+        return view('blog', compact('blogs'));
+    }
     public function index()
     {
         $blogs = Blog::paginate(10); // Fetch 10 records per page

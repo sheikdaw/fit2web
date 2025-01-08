@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+
+    public function index()
+    {
+        $blogs = Blog::paginate(10); // Fetch 10 records per page
+
+        // Decode JSON advantages into arrays
+        foreach ($blogs as $blog) {
+            $blog->advantages = json_decode($blog->advantages[0] ?? '[]', true);
+            $blog->tags = json_decode($blog->tags[0] ?? '[]', true);
+        }
+
+        return view('admin.blog', compact('blogs'));
+    }
     // Store a new blog
     public function store(Request $request)
     {

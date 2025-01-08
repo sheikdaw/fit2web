@@ -209,6 +209,19 @@
                                     </ul>
                                 </li>
 
+                                <li class="sidebar-list"> </i><a class="sidebar-link sidebar-title" href="#">
+                                        <svg class="stroke-icon">
+
+                                        </svg>
+                                        <svg class="fill-icon">
+                                            <i data-feather="user"></i>
+                                        </svg><span> Blog </span></a>
+                                    <ul class="sidebar-submenu">
+
+                                        <li><a href="{{ route('admin.blog') }}">View Blogs</a></li>
+                                    </ul>
+                                </li>
+
 
 
 

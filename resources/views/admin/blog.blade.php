@@ -267,7 +267,7 @@
                         <!-- Date -->
                         <div class="mb-3">
                             <label for="update_date" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="update_date" name="date" required>
+                            <input type="date" class="form-control" id="update_date" name="update_date" required>
                             <div class="invalid-feedback">Please select a date.</div>
                         </div>
 

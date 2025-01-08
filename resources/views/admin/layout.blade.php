@@ -100,10 +100,6 @@
                                 <input type="text" placeholder="Search here...">
                             </div>
                         </li>
-
-
-
-
                         <li class="py-0 profile-nav onhover-dropdown pe-0">
                             <div class="d-flex align-items-center profile-media"><img class="b-r-25"
                                     src="{{ asset('assets/images/favicon.png') }}" alt="">

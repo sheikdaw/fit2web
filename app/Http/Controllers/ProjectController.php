@@ -178,4 +178,11 @@ class ProjectController extends Controller
         // return response()->json($);
         return view('project-details', compact('project', 'advantage'));
     }
+    public function showProject()
+    {
+        // Paginate the results, e.g., 10 items per page
+        $projects = Project::paginate(10);
+
+        return view('projects', compact('projects'));
+    }
 }

@@ -285,16 +285,16 @@
                                                 </ul>
                                             </li>
                                             <li>
-                                                <a href="project.html">
+                                                <a href="{{ route('projects') }}">
                                                     Projects
                                                     <i class="fas fa-angle-down"></i>
                                                 </a>
-                                                <ul class="submenu">
+                                                {{-- <ul class="submenu">
                                                     <li><a href="project.html">Projects</a></li>
                                                     <li>
                                                         <a href="project-details.html">Project Details</a>
                                                     </li>
-                                                </ul>
+                                                </ul> --}}
                                             </li>
                                             <li>
                                                 <a href="blog.html">

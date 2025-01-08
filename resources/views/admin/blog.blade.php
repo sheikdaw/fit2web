@@ -39,14 +39,21 @@
                                         data-blog_name="{{ $blog->blog_name }}" data-type="{{ $blog->type }}"
                                         data-title_1="{{ $blog->title_1 }}" data-title_2="{{ $blog->title_2 }}"
                                         data-paragraph_1="{{ $blog->paragraph_1 }}"
-                                        data-paragraph_2="{{ $blog->paragraph_2 }}" data-date="{{ $blog->date }}"
+                                        data-paragraph_2="{{ $blog->paragraph_2 }}"
+                                        data-paragraph_3="{{ $blog->paragraph_3 }}" data-date="{{ $blog->date }}"
                                         data-category="{{ $blog->category }}"
                                         data-customer_name="{{ $blog->customer_name }}"
                                         data-advantages="{{ json_encode($blog->advantages) }}"
                                         data-project_summary="{{ $blog->project_summary }}"
-                                        data-rating="{{ $blog->rating }}">
+                                        data-rating="{{ $blog->rating }}" data-ordered_by="{{ $blog->ordered_by }}"
+                                        data-testimonial_phara="{{ $blog->testimonial_phara }}"
+                                        data-testimonial_name="{{ $blog->testimonial_name }}"
+                                        data-testimonial_by="{{ $blog->testimonial_by }}" data-tags="{{ $blog->tags }}"
+                                        data-image_1="{{ $blog->image_1 }}" data-image_2="{{ $blog->image_2 }}"
+                                        data-image_3="{{ $blog->image_3 }}" data-image_4="{{ $blog->image_4 }}">
                                         Update
                                     </button>
+
                                     <button class="btn btn-danger delete-blog"
                                         data-id="{{ $blog->id }}">Delete</button>
                                 </div>
@@ -438,7 +445,7 @@
                 $("#update_category").val(data.category);
                 $("#update_customer_name").val(data.customer_name);
                 $("#update_advantages").val(JSON.stringify(data
-                .advantages)); // Convert JSON to string format
+                    .advantages)); // Convert JSON to string format
                 $("#update_project_summary").val(data.project_summary);
                 $("#update_rating").val(data.rating);
                 $("#update_ordered_by").val(data.ordered_by);
@@ -450,7 +457,7 @@
                 // Set image paths if they exist
                 if (data.image_1) {
                     $("#update_image_1").attr("data-image-path", data
-                    .image_1); // Optionally store image path in a custom attribute
+                        .image_1); // Optionally store image path in a custom attribute
                 }
                 if (data.image_2) {
                     $("#update_image_2").attr("data-image-path", data.image_2);
@@ -523,7 +530,7 @@
                             if (xhr.status === 419) {
                                 alert(
                                     "CSRF token mismatch. Please refresh the page and try again."
-                                    );
+                                );
                             } else {
                                 alert("Failed to delete the blog. Please try again.");
                             }

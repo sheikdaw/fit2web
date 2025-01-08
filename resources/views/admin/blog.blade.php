@@ -205,8 +205,7 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="updateBlogForm" method="POST" action="{{ route('blogs.update', ['blog' => '']) }}" novalidate
-                    enctype="multipart/form-data">
+                <form id="updateBlogForm" novalidate enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">

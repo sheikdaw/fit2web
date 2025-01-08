@@ -170,7 +170,7 @@
                                             </ul>
                                             <h6>
                                                 <a href="blog-details.html">
-                                                    {{ $data->name }}
+                                                    {{ $data->blog_name }}
                                                 </a>
                                             </h6>
                                         </div>

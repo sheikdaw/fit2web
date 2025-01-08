@@ -310,6 +310,7 @@
 
             // Add Project
             $("#addProjectForm").on("submit", function(event) {
+                alert("hi");
                 event.preventDefault();
 
                 // Gather form data

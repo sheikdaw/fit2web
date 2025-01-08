@@ -141,7 +141,7 @@ class ProjectController extends Controller
         ]);
 
         // Return success message
-        return redirect()->route('admin.project')->with('success', 'Project updated successfully!');
+        return response()->json('success', 'Project updated successfully!');
     }
 
 

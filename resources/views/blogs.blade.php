@@ -52,10 +52,10 @@
                             </div>
                         @endforeach
                     </div>
-
-                    <div class="pagination_area style1">
+                    <div class="mt-4 pagination-wrapper ">
                         {{ $blogs->links('pagination::bootstrap-5') }}
                     </div>
+
                     {{-- <div class="pagination_area style1">
                         <ul class="pagination">
                             <li class="page-item">

@@ -219,6 +219,6 @@ class BlogController extends Controller
         $tags = json_decode($blog->tags, true);
 
         // return response()->json($);
-        return view('blog-details', compact('blog', 'advantage', 'tags', 'next', 'advantage'));
+        return view('blog-details', compact('blog', 'advantage', 'tags', 'next', 'previous'));
     }
 }

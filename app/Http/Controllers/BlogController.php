@@ -32,7 +32,7 @@ class BlogController extends Controller
             'title_2' => 'required|string|max:255',
             'paragraph_1' => 'required|string',
             'paragraph_2' => 'required|string',
-            'paragraph_3' => 'nullable|string',
+            'paragraph_3' => 'required|string',
             'date' => 'required|date',
             'category' => 'required|string|max:255',
             'customer_name' => 'required|string|max:255',

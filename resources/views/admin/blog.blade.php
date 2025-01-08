@@ -423,8 +423,9 @@
 
             // Edit Blog (populate modal fields with existing data)
             $(".editBlog").on("click", function() {
-                const data = $(this).data();
+                const data = $(this).data(); // Get the data attributes from the clicked element
 
+                // Set form field values using data attributes
                 $("#update_blog_id").val(data.id);
                 $("#update_blog_name").val(data.blog_name);
                 $("#update_type").val(data.type);
@@ -436,7 +437,8 @@
                 $("#update_date").val(data.date);
                 $("#update_category").val(data.category);
                 $("#update_customer_name").val(data.customer_name);
-                $("#update_advantages").val(JSON.stringify(data.advantages)); // Ensure JSON format
+                $("#update_advantages").val(JSON.stringify(data
+                .advantages)); // Convert JSON to string format
                 $("#update_project_summary").val(data.project_summary);
                 $("#update_rating").val(data.rating);
                 $("#update_ordered_by").val(data.ordered_by);
@@ -445,8 +447,25 @@
                 $("#update_testimonial_by").val(data.testimonial_by);
                 $("#update_tags").val(data.tags);
 
+                // Set image paths if they exist
+                if (data.image_1) {
+                    $("#update_image_1").attr("data-image-path", data
+                    .image_1); // Optionally store image path in a custom attribute
+                }
+                if (data.image_2) {
+                    $("#update_image_2").attr("data-image-path", data.image_2);
+                }
+                if (data.image_3) {
+                    $("#update_image_3").attr("data-image-path", data.image_3);
+                }
+                if (data.image_4) {
+                    $("#update_image_4").attr("data-image-path", data.image_4);
+                }
+
+                // Show the modal
                 $("#updateBlogModal").modal("show");
             });
+
 
             // Update Blog
             $("#updateBlogForm").on("submit", function(event) {
@@ -503,7 +522,8 @@
                         error: function(xhr, status, error) {
                             if (xhr.status === 419) {
                                 alert(
-                                    "CSRF token mismatch. Please refresh the page and try again.");
+                                    "CSRF token mismatch. Please refresh the page and try again."
+                                    );
                             } else {
                                 alert("Failed to delete the blog. Please try again.");
                             }

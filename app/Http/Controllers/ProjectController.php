@@ -152,19 +152,23 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
+        // Delete project images
         foreach (['image_1', 'image_2', 'image_3'] as $imageField) {
             if ($project->$imageField) {
-                $imagePath = public_path('storage/' . str_replace('public/', '', $project->$imageField));
+                $imagePath = public_path($project->$imageField); // Correct path for public images
                 if (file_exists($imagePath)) {
                     unlink($imagePath);
                 }
             }
         }
 
+        // Delete the project
         $project->delete();
 
-        return response()->json('success', 'Project deleted successfully!');
+        // Return a success message
+        return response()->json(['message' => 'Project deleted successfully!'], 200);
     }
+
     public function show($id)
     {
         $project = Project::findOrFail($id);

@@ -420,14 +420,21 @@
                         url: routes.projectDelete.replace("ID_PLACEHOLDER", projectId),
                         type: "DELETE",
                         headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
+                            "content"), // Ensure token is included
                         },
                         success: function(response) {
-                            alert(response.message); // Or use showFlashMessage if defined
-                            location.reload(); // Reload to reflect the deletion
+                            alert(response
+                            .message); // Or use a custom flash message display function
+                            location.reload(); // Reload the page to reflect the deletion
                         },
                         error: function(xhr, status, error) {
-                            alert("Failed to delete the project. Please try again.");
+                            if (xhr.status === 419) {
+                                alert(
+                                    "CSRF token mismatch. Please refresh the page and try again.");
+                            } else {
+                                alert("Failed to delete the project. Please try again.");
+                            }
                         },
                     });
                 }

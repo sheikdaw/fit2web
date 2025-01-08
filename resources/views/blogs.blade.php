@@ -20,34 +20,8 @@
     <div class="blog blog-page">
         <div class="container">
             <div class="row gy-5">
-                <div class="col-xl-8">
-                    <div class="blog-post-details">
-                        @foreach ($blogs as $blog)
-                            <div class="single-blog-post">
-                                <div class="post-featured-thumb">
-                                    <img src="{{ asset($blog->image_1) }}" alt="thumb">
-                                    <div class="content-date">
-                                        <h4>{{ \Carbon\Carbon::parse($blog->date)->format('d F Y') }}</h4>
-                                    </div>
-                                    <div class="content-meta">
-                                        <ul>
-                                            <li><i class="fa-regular fa-user"></i>{{ $blog->type }}</li>
-                                            <li><i class="fa-regular fa-folder-open"></i>{{ $blog->category }}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="post-content">
-                                    <h3><a href="{{ route('blog', ['id' => $blog->id]) }}">{{ $blog->title_1 }}</a></h3>
-                                    <p>{{ $blog->paragraph_1 }}</p>
-                                    <a href="{{ route('blog', ['id' => $blog->id]) }}">Read More <i
-                                            class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="mt-4 pagination-wrapper">
-                        {{ $blogs->links('pagination::bootstrap-5') }}
-                    </div>
+                <div class="mt-4">
+                    {{ $blogs->links('vendor.pagination.custom') }}
                 </div>
 
                 <div class="col-xl-4">

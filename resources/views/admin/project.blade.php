@@ -374,11 +374,10 @@
             $("#updateProjectForm").on("submit", function(event) {
                 event.preventDefault();
 
-                const projectId = $("#update_project_id").val();
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: routes.projectUpdate,
+                    url: routes.projectUpdate, // Replace with your route name or URL
                     type: "POST",
                     data: formData,
                     processData: false,
@@ -387,12 +386,17 @@
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
                     },
                     success: function(response) {
+                        // Hide the modal and show a success message
                         $("#updateProjectModal").modal("hide");
                         showFlashMessage(response.message, "success");
-                        // location.reload(); // Reload the page to reflect changes
+                        location.reload(); // Reload the page to reflect changes
                     },
                     error: function(xhr) {
+                        // Log the full error response for debugging
+                        console.error("Error Response:", xhr);
+
                         if (xhr.status === 422) {
+                            // Validation error handling
                             const errors = xhr.responseJSON.errors;
                             for (const key in errors) {
                                 const input = $(`#update_${key}`);
@@ -400,6 +404,7 @@
                                 input.next(".invalid-feedback").text(errors[key][0]);
                             }
                         } else {
+                            // Unexpected error handling
                             alert("An unexpected error occurred. Please try again.");
                         }
                     },

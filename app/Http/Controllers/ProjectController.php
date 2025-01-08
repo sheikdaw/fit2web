@@ -140,10 +140,11 @@ class ProjectController extends Controller
             'image_3' => $imagePaths['image_3'] ?? $project->image_3,
         ]);
 
-        // Return success message
-        return response()->json('success', 'Project updated successfully!');
+        // Return a success message
+        return response()->json([
+            'message' => 'Project updated successfully!',
+        ], 200);
     }
-
 
 
 

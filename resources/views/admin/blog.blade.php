@@ -207,7 +207,7 @@
             <div class="modal-content">
                 <form id="updateBlogForm" novalidate enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
+
                     <div class="modal-header">
                         <h5 class="modal-title" id="updateBlogModalLabel">Update Blog</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -485,7 +485,7 @@
 
                 $.ajax({
                     url: routes.blogUpdate, // Replace with your route name or URL
-                    type: "put",
+                    type: "POST",
                     data: formData,
                     processData: false,
                     contentType: false,

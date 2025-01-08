@@ -31,8 +31,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::post('/admin/store-blog', [BlogController::class, 'store'])->name('admin.store-blog');
 
     Route::get('/blog', [BlogController::class, 'index'])->name("admin.blog");
-    // Update an existing blog
-    Route::post('/admin/update-blog', [BlogController::class, 'update'])->name('admin.blogUpdate');
+    Route::post('/admin/update-blog/{blog}', [BlogController::class, 'update'])->name('blogs.update');
 
     // Delete a blog
     Route::delete('/admin/blog/{id}', [BlogController::class, 'destroy'])->name('admin.blog.destroy');

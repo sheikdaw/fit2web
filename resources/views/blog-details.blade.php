@@ -88,15 +88,12 @@
                         </div>
                         <div class="comment-part">
                             <div class="comment-header">
-                                {{-- Previous Post --}}
                                 @if ($previous)
                                     <h5><a href="{{ route('blog', ['id' => $previous->id]) }}">
                                             <i class="fa-solid fa-angle-left"></i> Previous Post:
                                             {{ $previous->title_1 }}
                                         </a></h5>
                                 @endif
-
-                                {{-- Next Post --}}
                                 @if ($next)
                                     <h5><a href="{{ route('blog', ['id' => $next->id]) }}">
                                             Next Post: {{ $next->title_1 }} <i class="fa-solid fa-angle-right"></i>
@@ -159,60 +156,29 @@
                                 <h3>Recent Post</h3>
                             </div>
                             <div class="recent-post-area">
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/images/blog/blogPostThumb1_2.png" alt="img">
+                                @foreach ($blogs as $data)
+                                    <div class="recent-items">
+                                        <div class="recent-thumb">
+                                            <img src="{{ asset($data->image_1) }}" alt="img">
+                                        </div>
+                                        <div class="recent-content">
+                                            <ul>
+                                                <li>
+                                                    <i class="fa-regular fa-folder-open"></i>
+                                                    Category
+                                                </li>
+                                            </ul>
+                                            <h6>
+                                                <a href="blog-details.html">
+                                                    {{ $data->name }}
+                                                </a>
+                                            </h6>
+                                        </div>
                                     </div>
-                                    <div class="recent-content">
-                                        <ul>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                Category
-                                            </li>
-                                        </ul>
-                                        <h6>
-                                            <a href="blog-details.html">
-                                                Robots automated systems
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/images/blog/blogPostThumb1_3.png" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <ul>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                Category
-                                            </li>
-                                        </ul>
-                                        <h6>
-                                            <a href="blog-details.html">
-                                                Renewable energy sources
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/images/blog/blogPostThumb1_4.png" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <ul>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                Category
-                                            </li>
-                                        </ul>
-                                        <h6>
-                                            <a href="blog-details.html">
-                                                AI and machine learning
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
+                                @endforeach
+
+
+
                             </div>
                         </div>
                         <div class="single-sidebar-widget wow fadeInUp" data-wow-delay=".4s">

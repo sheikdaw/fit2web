@@ -92,60 +92,26 @@
                                 <h3>Recent Post</h3>
                             </div>
                             <div class="recent-post-area">
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/images/blog/blogPostThumb1_2.png" alt="img">
+                                @foreach ($threeblogs as $data)
+                                    <div class="recent-items">
+                                        <div class="recent-thumb">
+                                            <img src="{{ asset($data->image_1) }}" alt="img">
+                                        </div>
+                                        <div class="recent-content">
+                                            <ul>
+                                                <li>
+                                                    <i class="fa-regular fa-folder-open"></i>
+                                                    Category
+                                                </li>
+                                            </ul>
+                                            <h6>
+                                                <a href="blog-details.html">
+                                                    {{ $data->name }}
+                                                </a>
+                                            </h6>
+                                        </div>
                                     </div>
-                                    <div class="recent-content">
-                                        <ul>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                Category
-                                            </li>
-                                        </ul>
-                                        <h6>
-                                            <a href="blog-details.html">
-                                                Robots automated systems
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/images/blog/blogPostThumb1_3.png" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <ul>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                Category
-                                            </li>
-                                        </ul>
-                                        <h6>
-                                            <a href="blog-details.html">
-                                                Renewable energy sources
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="recent-items">
-                                    <div class="recent-thumb">
-                                        <img src="assets/images/blog/blogPostThumb1_4.png" alt="img">
-                                    </div>
-                                    <div class="recent-content">
-                                        <ul>
-                                            <li>
-                                                <i class="fa-regular fa-folder-open"></i>
-                                                Category
-                                            </li>
-                                        </ul>
-                                        <h6>
-                                            <a href="blog-details.html">
-                                                AI and machine learning
-                                            </a>
-                                        </h6>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="single-sidebar-widget wow fadeInUp" data-wow-delay=".4s">

@@ -12,8 +12,9 @@ class BlogController extends Controller
     public function showBlogs()
     {
         $blogs = Blog::paginate(1);
+        $threeblogs = Blog::orderBy('id', 'desc')->take(3)->get();
 
-        return view('blogs', compact('blogs'));
+        return view('blogs', compact('blogs', 'threeblogs'));
     }
     public function index()
     {
@@ -217,8 +218,10 @@ class BlogController extends Controller
         $tags = json_decode($blog->tags, true);
         $advantage = json_decode($advantage[0], true);
         $tags = json_decode($blog->tags, true);
+        $blogs = Blog::orderBy('id', 'desc')->take(3)->get();
+
 
         // return response()->json($);
-        return view('blog-details', compact('blog', 'advantage', 'tags', 'next', 'previous'));
+        return view('blog-details', compact('blog', 'advantage', 'tags', 'next', 'previous', 'blogs'));
     }
 }

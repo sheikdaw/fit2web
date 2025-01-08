@@ -222,7 +222,7 @@
                                             <li>
                                                 <a href="{{ route('blogs') }}">
                                                     Blog
-                                                    <i class="fas fa-angle-down"></i>
+
                                                 </a>
                                                 {{-- <ul class="submenu">
                                                     <li><a href="blog.html">Blog</a></li>

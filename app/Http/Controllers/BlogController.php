@@ -13,7 +13,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::paginate(10);
 
-        return view('blog', compact('blogs'));
+        return view('blogs', compact('blogs'));
     }
     public function index()
     {
